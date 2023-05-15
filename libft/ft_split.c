@@ -6,14 +6,14 @@
 /*   By: gamado-x <gamado-x@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 17:10:18 by gamado-x          #+#    #+#             */
-/*   Updated: 2023/05/15 19:11:36 by gamado-x         ###   ########.fr       */
+/*   Updated: 2023/05/15 19:22:27 by gamado-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-static void	ft_allocate(char **tab, char *s, char c)
+static char	*ft_allocate(char **tab, char *s, char c)
 {
 	int	i;
 
