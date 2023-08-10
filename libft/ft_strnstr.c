@@ -1,40 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 17:48:49 by gamado-x          #+#    #+#             */
-/*   Updated: 2023/05/20 16:29:24 by gamado-x         ###   ########.fr       */
+/*   Created: 2023/04/13 18:50:38 by gamado-x          #+#    #+#             */
+/*   Updated: 2023/05/21 12:53:21 by gamado-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*typedef struct s_list
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	void			*content;
-	struct s_list	*next;
-}			t_list;*/
+	size_t	i;
+	size_t	j;
 
-t_list	*ft_lstnew(void *content)
-{
-	t_list	*new_node;
-
-	new_node = (t_list *)malloc(sizeof(t_list));
-	if (new_node == NULL)
+	i = 0;
+	if (ft_strlen(little) == 0)
+		return ((char *) big);
+	if (len == 0)
 		return (NULL);
-	new_node->content = content;
-	new_node->next = NULL;
-	return (new_node);
+	while (big[i] && i < len)
+	{
+		j = 0;
+		while (big[i + j] && little[j]
+			&& i + j < len && big[i + j] == little[j])
+			j++;
+		if (!little[j])
+			return ((char *)(&big[i]));
+		i++;
+	}
+	return (NULL);
 }
-
-/*int	main(void)
-{
-	int	num = 42;
-	int	*ptr = &num;	
-	t_list	*node1 = ft_lstnew(ptr);
-	printf("%d, %p", *(int *)node1->content, node1->next);
-	return (0);
-}*/

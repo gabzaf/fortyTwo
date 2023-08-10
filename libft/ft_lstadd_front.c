@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 17:48:49 by gamado-x          #+#    #+#             */
-/*   Updated: 2023/05/20 16:29:24 by gamado-x         ###   ########.fr       */
+/*   Created: 2023/05/17 13:24:39 by gamado-x          #+#    #+#             */
+/*   Updated: 2023/05/20 17:12:18 by gamado-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,37 @@
 	struct s_list	*next;
 }			t_list;*/
 
-t_list	*ft_lstnew(void *content)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_list	*new_node;
-
-	new_node = (t_list *)malloc(sizeof(t_list));
-	if (new_node == NULL)
-		return (NULL);
-	new_node->content = content;
-	new_node->next = NULL;
-	return (new_node);
+	if (lst == NULL)
+		return ;
+	new->next = (*lst);
+	(*lst) = new;
 }
 
 /*int	main(void)
 {
-	int	num = 42;
-	int	*ptr = &num;	
-	t_list	*node1 = ft_lstnew(ptr);
-	printf("%d, %p", *(int *)node1->content, node1->next);
+	t_list *head = malloc(sizeof(t_list));
+	head->content = "Node 1";
+	head->next = NULL;
+
+	t_list *newNode = malloc(sizeof(t_list));
+	newNode->content = "Node 2";
+	newNode->next = NULL;
+
+	ft_lstadd_front(&head, newNode);
+
+	t_list *current = head;
+	while (current != NULL)
+	{
+		printf("%s\n", (char *)current->content);
+		current = current->next;
+	}
+	while (head != NULL)
+	{
+		t_list *temp = head;
+		head = head->next;
+		free(temp);
+	}
 	return (0);
 }*/

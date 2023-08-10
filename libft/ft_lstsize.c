@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 17:48:49 by gamado-x          #+#    #+#             */
-/*   Updated: 2023/05/20 16:29:24 by gamado-x         ###   ########.fr       */
+/*   Created: 2023/05/17 16:27:42 by gamado-x          #+#    #+#             */
+/*   Updated: 2023/05/20 17:57:23 by gamado-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,30 @@
 	struct s_list	*next;
 }			t_list;*/
 
-t_list	*ft_lstnew(void *content)
+int	ft_lstsize(t_list *lst)
 {
-	t_list	*new_node;
+	int	i;
 
-	new_node = (t_list *)malloc(sizeof(t_list));
-	if (new_node == NULL)
-		return (NULL);
-	new_node->content = content;
-	new_node->next = NULL;
-	return (new_node);
+	i = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }
 
 /*int	main(void)
 {
-	int	num = 42;
-	int	*ptr = &num;	
-	t_list	*node1 = ft_lstnew(ptr);
-	printf("%d, %p", *(int *)node1->content, node1->next);
-	return (0);
+	t_list *frstnode = malloc(sizeof(t_list));
+	t_list *scndnode = malloc(sizeof(t_list));
+	t_list *thrdnode = malloc(sizeof(t_list));
+	frstnode->content = "Node 1";
+	frstnode->next = scndnode;
+	scndnode->content = "Node 2";
+	scndnode->next = thrdnode;
+	thrdnode->content = "Node 3";
+	thrdnode->next = NULL;
+	printf("%d\n", ft_lstsize(frstnode));
+
 }*/
