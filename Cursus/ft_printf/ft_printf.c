@@ -6,13 +6,13 @@
 /*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 10:30:22 by gamado-x          #+#    #+#             */
-/*   Updated: 2023/09/17 12:28:59 by gamado-x         ###   ########.fr       */
+/*   Updated: 2023/09/17 18:03:17 by gamado-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_verify_format(va_list args, char *str, int i, int *count)
+void	ft_verify_format(va_list args, const char *str, int i, int *count)
 {
 	char	*dec;
 	char	*low_hex;
@@ -42,23 +42,21 @@ void	ft_verify_format(va_list args, char *str, int i, int *count)
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
-	char	*str;
 	int		i;
 	int		count;
 
-	str = (char *)format;
 	i = 0;
 	count = 0;
 	va_start(args, format);
-	while (str[i])
+	while (format[i])
 	{
-		if (str[i] == '%')
+		if (format[i] == '%')
 		{
 			i++;
-			ft_verify_format(args, str, i, &count);
+			ft_verify_format(args, format, i, &count);
 		}
 		else
-			ft_putchar_ft_printf(str[i], &count);
+			ft_putchar_ft_printf(format[i], &count);
 		i++;
 	}
 	va_end(args);

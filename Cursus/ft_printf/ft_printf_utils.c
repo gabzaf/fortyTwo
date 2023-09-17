@@ -6,19 +6,19 @@
 /*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 09:36:49 by gamado-x          #+#    #+#             */
-/*   Updated: 2023/09/17 12:42:18 by gamado-x         ###   ########.fr       */
+/*   Updated: 2023/09/17 18:00:31 by gamado-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar_ft_printf(char c, int *count)
+void	ft_putchar_ft_printf(const char c, int *count)
 {
 	write (1, &c, 1);
 	(*count)++;
 }
 
-void	ft_putstr_ft_printf(char *s, int *count)
+void	ft_putstr_ft_printf(const char *s, int *count)
 {
 	int	i;
 
