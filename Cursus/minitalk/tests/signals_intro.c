@@ -1,50 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_2nd_test.c                                    :+:      :+:    :+:   */
+/*   signals_intro.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gamado-x <gamado-x@student.42porto.co      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/13 11:11:25 by gamado-x          #+#    #+#             */
-/*   Updated: 2023/10/14 11:54:11 by gamado-x         ###   ########.fr       */
+/*   Created: 2023/10/14 12:50:10 by gamado-x          #+#    #+#             */
+/*   Updated: 2023/10/14 13:00:32 by gamado-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <signal.h>
 
 int	main(void)
 {
 	int	pid;
-	int	err;
-	int	wstatus;
-	int	statusCode;
 
 	pid = fork();
 	if (pid == -1)
 		return (1);
 	if (pid == 0)
 	{
-		err = execlp("ping", "ping", "-c", "3", "google.com", NULL);
-		if (err == -1)
+		while(1)
 		{
-			printf("Could not find the program to execute\n");
-			return (2);
+			printf("Some text goes here\n");
+			usleep(50000);
 		}
 	}
 	else
 	{
-		wait(&wstatus);
-		if (WIFEXITED(wstatus))
-		{
-			statusCode = WEXITSTATUS(wstatus);
-			if (statusCode == 0)
-				printf("Success!\n");
-			else
-				printf("Failure\n");
-		}
-		printf("Some post processing goes here!\n");
+		sleep(1);
+		kill(pid, SIGKILL);
+		wait(NULL);
 	}
 	return (0);
 }
