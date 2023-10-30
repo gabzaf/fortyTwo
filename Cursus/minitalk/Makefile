@@ -6,14 +6,14 @@
 #    By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/05 16:45:30 by gamado-x          #+#    #+#              #
-#    Updated: 2023/10/05 18:21:50 by gamado-x         ###   ########.fr        #
+#    Updated: 2023/10/30 13:22:08 by gamado-x         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC	:= cc
 CFLAGS	:= -Wall -Wextra -Werror
-CLIENTSRCS	:= client.c ft_strlen.c
-SERVERSRCS	:= server.c 
+CLIENTSRCS	:= client.c ft_utils.c
+SERVERSRCS	:= server.c ft_utils.c ft_utils_two.c
 CLIENTOBJS	:= $(CLIENTSRCS:.c=.o)
 SERVEROBJS	:= $(SERVERSRCS:.c=.o)
 
