@@ -6,7 +6,7 @@
 #    By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 12:45:08 by gamado-x          #+#    #+#              #
-#    Updated: 2023/11/08 12:02:13 by gamado-x         ###   ########.fr        #
+#    Updated: 2023/11/08 16:19:30 by gamado-x         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ CFLAGS		:= -Wall -Wextra -Werror
 MLXFLAGS	:= -lmlx -lXext -lX11
 AR		:= ar -crs
 RM		:= rm -rf
-SRCS		:= window.c image.c main.c 
+SRCS		:= window.c image.c canvas.c main.c 
 OBJS		:= $(SRCS:%.c=$(OBJS_DIR)/%.o)
 
 all: $(NAME)

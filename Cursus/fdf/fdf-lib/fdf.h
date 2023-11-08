@@ -6,7 +6,7 @@
 /*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:13:04 by gamado-x          #+#    #+#             */
-/*   Updated: 2023/11/08 12:01:34 by gamado-x         ###   ########.fr       */
+/*   Updated: 2023/11/08 16:20:48 by gamado-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,14 @@ typedef struct	s_img
 	int		endian;
 }		t_img;
 
+typedef struct	s_square
+{
+	unsigned short int	x;
+	unsigned short int	y;
+	unsigned short int	size;
+	int				color;
+}		t_square;
+
 # include "../minilibx-linux/mlx.h"
 # include <unistd.h>
 # include <stdlib.h>
@@ -41,5 +49,8 @@ typedef struct	s_img
 
 t_win	new_program(int w, int h, char *str);
 t_img	new_img(int w, int h, t_win window);
+void	put_pixel_img(t_img img, int x, int y, int color);
+int	exit_window(t_win *window);
+void	draw_square(t_square square, t_img img);
 
 #endif

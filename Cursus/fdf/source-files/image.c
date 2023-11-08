@@ -6,7 +6,7 @@
 /*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 11:37:42 by gamado-x          #+#    #+#             */
-/*   Updated: 2023/11/08 11:58:21 by gamado-x         ###   ########.fr       */
+/*   Updated: 2023/11/08 14:55:32 by gamado-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,15 @@ t_img	new_img(int w, int h, t_win window)
 	image.w = w;
 	image.h = h;
 	return (image);
+}
+
+void	put_pixel_img(t_img img, int x, int y, int color)
+{
+	char	*dst;
+
+	if (x >= 0 && y >= 0 && x < img.w && y < img.h)
+	{
+		dst = img.addr + (y * img.size_len + x * (img.bpp / 8));
+		*(unsigned int *)dst = color;
+	}
 }
