@@ -6,7 +6,7 @@
 #    By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 12:45:08 by gamado-x          #+#    #+#              #
-#    Updated: 2023/11/08 16:19:30 by gamado-x         ###   ########.fr        #
+#    Updated: 2023/11/09 12:07:16 by gamado-x         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,12 +16,13 @@ OBJS_DIR	:= objs
 MLX_DIR		:= ./minilibx-linux
 LIBFDF		:= fdf-lib
 LIBMLX		:= ./minilibx-linux/libmlx.a
+LIBGNL		:= ./gnl-lib
 CC		:= cc
 CFLAGS		:= -Wall -Wextra -Werror
 MLXFLAGS	:= -lmlx -lXext -lX11
 AR		:= ar -crs
 RM		:= rm -rf
-SRCS		:= window.c image.c canvas.c main.c 
+SRCS		:= window.c image.c canvas.c get_next_line.c get_next_line_utils.c main.c 
 OBJS		:= $(SRCS:%.c=$(OBJS_DIR)/%.o)
 
 all: $(NAME)
@@ -31,7 +32,7 @@ $(NAME): $(OBJS) $(LIBMLX)
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 	mkdir -p $(@D)
-	$(CC) -I $(LIBFDF) $(CFLAGS) -c $< -o $@
+	$(CC) -I $(LIBFDF) -I $(LIBGNL) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS_DIR)
