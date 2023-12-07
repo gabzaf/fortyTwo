@@ -6,20 +6,19 @@
 /*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:53:23 by gamado-x          #+#    #+#             */
-/*   Updated: 2023/11/09 18:55:52 by gamado-x         ###   ########.fr       */
+/*   Updated: 2023/12/07 19:16:28 by gamado-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "fdf.h"
 
-
-
-int	get_height()
+int	get_height(char *file_name)
 {
 	int	height;
 	int	fd;
 
-	fd = open("/nfs/homes/gamado-x/Documents/Cursus/fdf/test_maps/42.fdf", O_RDONLY);
+	fd = open(file_name, O_RDONLY);
 	height = 0;
 	while (get_next_line(fd))
 		height++;
@@ -29,54 +28,56 @@ int	get_height()
 	return (height);
 }
 
-int	get_width(int height)
+int	get_width(char *file_name)
 {
 	int	width;
 	int	i;
 	int	fd;
 
-	fd = open("/nfs/homes/gamado-x/Documents/Cursus/fdf/test_maps/42.fdf", O_RDONLY);
+	fd = open(file_name, O_RDONLY);
 	i = 0;
-	width = ft_strlen(get_next_line(fd));
-	while (i < height - 1)
-	{
-		if (width != ft_strlen(get_next_line(fd)))
-		{
-			printf("Wrong format map.");
-			exit(0);
-		}
-		i++;
-	}
+	width = ft_nbr_counter(get_next_line(fd), ' ');
 	close(fd);
 	return (width);
 }
 
-void	matrix_insertion(int **m, int r, int c)
+void	matrix_insertion(int *matrix_row, char *line)
 {
-	int	i;
+	char	**nbrs;
+	int		i;
 
+	nbrs = ft_split(line, ' ');
 	i = 0;
-	while (i < r)
+	while (nbrs[i])
 	{
-		m[i] = (int *)malloc(c * sizeof(int));
-		
+		matrix_row[i] = ft_atoi(nbrs[i]);
+		free(nbrs[i]);
 		i++;
 	}
 }
 
-int	main(void)
+void	file_reader(char *file_name, t_win *data)
 {
-	int	fd;
-	int	rows;
-	int	cols;
-	int	**matrix;
+	int		fd;
+	int		i;
+	char	*line;
 
-	rows = get_height();
-	printf("%d", rows);
-	matrix = (int **)malloc(rows * sizeof(int *));
-	cols = get_width(rows);
-
-	printf("%d", cols);
-	free(matrix);
-	return (0);
+	data->height = get_height(file_name);
+	data->matrix = (int **)malloc((data->height + 1) * sizeof(int *));
+	data->width = get_width(file_name);
+	i = 0;
+	while (i <= data->height)
+		data->matrix[i++] = (int *)malloc((data->width + 1) * sizeof(int));
+	fd = open(file_name, O_RDONLY);
+	i = 0;
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		matrix_insertion(data->matrix[i], line);
+		free(line);
+		i++;
+	}
+	data->matrix[i] = NULL;
 }
