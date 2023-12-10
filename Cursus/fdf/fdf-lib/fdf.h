@@ -6,7 +6,7 @@
 /*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 14:13:04 by gamado-x          #+#    #+#             */
-/*   Updated: 2023/12/07 19:12:42 by gamado-x         ###   ########.fr       */
+/*   Updated: 2023/12/09 14:36:13 by gamado-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 
 # define ESC 65307
 
-//Define a structure to represent the window and its properties
 typedef struct	s_win
 {
 	void	*mlx_ptr; 		//Minilib context pointer
 	void	*win_ptr;		//Window pointer
 	int		height; 	//Height of the matrix
 	int		width;  	//Width of the matrix
-	int		zoom;
+	float		zoom;
 	int		color;
 	int		**matrix;	//Matrix
 }		t_win;
@@ -60,6 +59,6 @@ void	draw(t_win *data);
 void	input_error(int argc, char *argv);
 void	isometric(float *x, float *y, int z);
 int	calculate_color(int z, int z1);
-void	point_factor(float *x, float *x1, float *y, float *y1);
+void	screen_fit(float *x, float *x1, float *y, float *y1);
 
 #endif

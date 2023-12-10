@@ -6,12 +6,12 @@
 #    By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 12:45:08 by gamado-x          #+#    #+#              #
-#    Updated: 2023/12/07 19:09:01 by gamado-x         ###   ########.fr        #
+#    Updated: 2023/12/09 14:55:48 by gamado-x         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= fdf
-SRCS_DIR	:= source-files
+SRCS_DIR	:= src
 OBJS_DIR	:= objs
 MLX_DIR		:= ./minilibx-linux
 LIBFDF		:= fdf-lib

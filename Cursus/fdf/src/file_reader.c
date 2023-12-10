@@ -6,7 +6,7 @@
 /*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 11:53:23 by gamado-x          #+#    #+#             */
-/*   Updated: 2023/12/07 19:16:28 by gamado-x         ###   ########.fr       */
+/*   Updated: 2023/12/09 16:26:01 by gamado-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,19 @@
 
 int	get_height(char *file_name)
 {
-	int	height;
-	int	fd;
+	int		height;
+	int		fd;
+	char	*line;
 
 	fd = open(file_name, O_RDONLY);
 	height = 0;
-	while (get_next_line(fd))
+	line = get_next_line(fd);
+	while (line)
+	{
 		height++;
+		free(line);
+		line = get_next_line(fd);
+	}
 	close(fd);
 	if (height == 0)
 		exit(0);
@@ -54,6 +60,21 @@ void	matrix_insertion(int *matrix_row, char *line)
 		free(nbrs[i]);
 		i++;
 	}
+	free(nbrs);
+}
+
+void	row_allocation(t_win *data)
+{
+	int	i;
+
+	i = 0;
+	while (i <= data->height)
+	{
+		data->matrix[i] = (int *)malloc((data->width + 1) * sizeof(int));
+		if (!data->matrix[i])
+			exit(0);
+		i++;
+	}
 }
 
 void	file_reader(char *file_name, t_win *data)
@@ -64,10 +85,10 @@ void	file_reader(char *file_name, t_win *data)
 
 	data->height = get_height(file_name);
 	data->matrix = (int **)malloc((data->height + 1) * sizeof(int *));
+	if (!data->matrix)
+		exit(0);
 	data->width = get_width(file_name);
-	i = 0;
-	while (i <= data->height)
-		data->matrix[i++] = (int *)malloc((data->width + 1) * sizeof(int));
+	row_allocation(data);
 	fd = open(file_name, O_RDONLY);
 	i = 0;
 	while (1)
@@ -79,5 +100,5 @@ void	file_reader(char *file_name, t_win *data)
 		free(line);
 		i++;
 	}
-	data->matrix[i] = NULL;
+	close(fd);
 }

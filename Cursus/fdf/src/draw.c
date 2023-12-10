@@ -6,19 +6,11 @@
 /*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 17:24:12 by gamado-x          #+#    #+#             */
-/*   Updated: 2023/12/07 19:11:06 by gamado-x         ###   ########.fr       */
+/*   Updated: 2023/12/09 17:57:14 by gamado-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-/*int	calculate_color(int z, int z1)
-{
-	if (z || z1)
-		return (0xeB0c0c);
-	else
-		return (0xffffff);
-}*/
 
 void	startp_zoom(float *x, float *y, t_win *data)
 {
@@ -32,14 +24,6 @@ void	endp_zoom(float *x1, float *y1, t_win *data)
 	*y1 *= data->zoom;
 }
 
-/*void	point_factor(float *x, float *x1, float *y, float *y1)
-{
-	*x += 150;
-	*y += 150;
-	*x1 += 150;
-	*y1 += 150;
-}*/
-
 void	bresenham(t_bresenham bre, t_win *data)
 {
 	bre.z = data->matrix[(int)bre.y][(int)bre.x];
@@ -49,7 +33,7 @@ void	bresenham(t_bresenham bre, t_win *data)
 	data->color = calculate_color(bre.z, bre.z1);
 	isometric(&bre.x, &bre.y, bre.z);
 	isometric(&bre.x1, &bre.y1, bre.z1);
-	point_factor(&bre.x, &bre.x1, &bre.y, &bre.y1);
+	screen_fit(&bre.x, &bre.x1, &bre.y, &bre.y1);
 	bre.x_step = bre.x1 - bre.x;
 	bre.y_step = bre.y1 - bre.y;
 	bre.max = fmax(fabs(bre.x_step), fabs(bre.y_step));
@@ -63,7 +47,7 @@ void	bresenham(t_bresenham bre, t_win *data)
 	}
 }
 
-void	width_loop(float *x, float *y, t_bresenham *bre, t_win *data)
+void	grid_lines(float *x, float *y, t_bresenham *bre, t_win *data)
 {
 	bre->x = *x;
 	bre->y = *y;
@@ -95,7 +79,9 @@ void	draw(t_win *data)
 		while (x < data->width)
 		{
 			bre = (t_bresenham *)malloc(sizeof(t_bresenham));
-			width_loop(&x, &y, bre, data);
+			if (!bre)
+				exit(0);
+			grid_lines(&x, &y, bre, data);
 			free(bre);
 			x++;
 		}

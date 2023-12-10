@@ -6,7 +6,7 @@
 /*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 16:41:23 by gamado-x          #+#    #+#             */
-/*   Updated: 2023/12/07 19:20:38 by gamado-x         ###   ########.fr       */
+/*   Updated: 2023/12/09 17:56:53 by gamado-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	close_window(t_win *win)
 	if (win)
 	{
 		mlx_destroy_window(win->mlx_ptr, win->win_ptr);
+		mlx_destroy_display(win->mlx_ptr);
 		free(win->mlx_ptr);
 		free(win);
 		exit(EXIT_SUCCESS);
@@ -42,6 +43,18 @@ void	new_window(t_win *data)
 		exit(0);
 }
 
+void	dealoc_matrix(t_win *data)
+{
+	int	i;
+
+	i = 0;
+	while (i <= data->height)
+	{
+		free(data->matrix[i]);
+		i++;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_win	*data;
@@ -52,8 +65,16 @@ int	main(int argc, char **argv)
 		exit(0);
 	file_reader(argv[1], data);
 	new_window(data);
-	data->zoom = 20;
+	if (data->height < 50 || data->width < 50)
+		data->zoom = 20;
+	else if (data->height < 300 || data->width < 100)
+		data->zoom = 6.5;
+	else
+		data->zoom = 2.7;
 	draw(data);
+	dealoc_matrix(data);
+	free(data->matrix);
+	mlx_hook(data->win_ptr, 17, 0, close_window, data);
 	mlx_key_hook(data->win_ptr, &deal_key, data);
 	mlx_loop(data->mlx_ptr);
 	return (0);
