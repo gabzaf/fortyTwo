@@ -20,6 +20,10 @@ Each project comes with its own set of requirements and objectives, challenging 
 Throughout my journey at 42, I've honed my problem-solving skills, learned to work effectively in teams and gained a deeper understanding of computer science concepts. 
 I'm excited to share my projects with you and hope they inspire others on their learning journey.
 
+## Finished Projects So Far
+
+Five
+
 ---
 
 Feel free to explore the projects in this repository and don't hesitate to reach out if you have any questions or feedback. 
