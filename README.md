@@ -22,7 +22,7 @@ I'm excited to share my projects with you and hope they inspire others on their 
 
 ## Finished Projects So Far
 
-Five
+Five!
 
 ---
 
