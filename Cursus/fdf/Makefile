@@ -6,16 +6,16 @@
 #    By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 12:45:08 by gamado-x          #+#    #+#              #
-#    Updated: 2023/12/09 14:55:48 by gamado-x         ###   ########.fr        #
+#    Updated: 2024/04/05 17:37:24 by gamado-x         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= fdf
 SRCS_DIR	:= src
 OBJS_DIR	:= objs
-MLX_DIR		:= ./minilibx-linux
+MLX_REP		:= minilibx-linux
 LIBFDF		:= fdf-lib
-LIBMLX		:= ./minilibx-linux/libmlx.a
+MLXLIB		:= minilib-linux/libmlx_Linux.a
 LIBGNL		:= ./gnl-lib
 CC		:= cc
 CFLAGS		:= -Wall -Wextra -Werror
@@ -27,8 +27,15 @@ OBJS		:= $(SRCS:%.c=$(OBJS_DIR)/%.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBMLX)
-	$(CC) $(CFLAGS) $(OBJS) -L$(MLX_DIR) $(MLXFLAGS) -o $(NAME)
+$(NAME): $(MLXLIB) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -L$(MLX_REP) $(MLXFLAGS) -o $(NAME)
+
+$(MLXLIB): $(MLX_REP)
+	@rm -rf minilib-linux/.git
+	$(MAKE) -C $(MLX_REP)
+
+$(MLX_REP): 
+	@git clone git@github.com:42Paris/minilibx-linux.git
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 	mkdir -p $(@D)

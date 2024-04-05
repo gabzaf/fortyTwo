@@ -17,15 +17,14 @@ I used the miniLibX graphic library to manage windows and draw lines.
 
 ## 2. Getting Started
 To get started with FdF, clone this repository to your local machine.
-Navigate to the FdF directory and compile the project using your preferred compiler.
-This will generate an executable file named fdf.
+Navigate to the FdF directory and run make. This will clone a repo of minilibx-linux a simple X-Window (X11R6) programming API in C, designed for students, suitable for X-beginners.
 
 ## 3. Functionality
 The FdF program reads a file containing a map of the landscape, where each number represents the height of a point on the grid. 
 It then renders this map as a wireframe model on the screen, allowing to explore the landscape from different angles and perspectives.
 
 ## 4. Usage
-To use FdF, run the executable file with a map file as an argument
+To use FdF, run ./fdf testmaps/42.fdf or any other maps you want on your terminal. Search testmaps directory to check out the different maps.
 
 ---
 
