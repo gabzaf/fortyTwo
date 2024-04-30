@@ -1,59 +1,37 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   rotone.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/26 13:22:35 by gamado-x          #+#    #+#             */
-/*   Updated: 2024/04/26 14:10:52 by gamado-x         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <unistd.h>
-#include <stdlib.h>
-
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
-void	ft_check_letters(char c)
-{
-	if (c >= 65 && c <= 90)
-	{
-		if (c == 90)
-			ft_putchar('A');
-		else
-			ft_putchar(c + 1);
-	}
-	else if (c >= 97 && c <= 122)
-	{
-		if (c == 122)
-			ft_putchar('a');
-		else
-			ft_putchar(c + 1);
-	}
-	else
-		ft_putchar(c);
-}
 
 int	main(int argc, char **argv)
 {
 	int	i;
-	int	j;
+	char	p;
 
-	i = 1;
-	j = 0;
 	if (argc == 2)
 	{
-		while (argv[i])
+		i = 0;
+		while (argv[1][i])
 		{
-			while (argv[i][j])
+			if (argv[1][i] >= 65 && argv[1][i] <= 90)
 			{
-				ft_check_letters(argv[i][j]);
-				j++;
+				if (argv[1][i] == 90)
+					write(1, "A", 1);
+				else
+				{
+					p = argv[1][i] + 1;
+					write(1, &p, 1);
+				}
 			}
+			else if (argv[1][i] >= 97 && argv[1][i] <= 122)
+			{
+				if (argv[1][i] == 122)
+					write(1, "a", 1);
+				else
+				{
+					p = argv[1][i] + 1;
+					write(1, &p, 1);
+				}
+			}
+			else
+				write(1, &argv[1][i], 1);
 			i++;
 		}
 	}
