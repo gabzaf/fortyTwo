@@ -14,9 +14,25 @@
 
 int	main(int argc, char **argv)
 {
-	//t_node	*head;
+	//t_list	*a;
+	//t_list	*b;
+	int	i;
 
-	check_input(argc, argv);
-
+	i = 0;
+	//a = NULL;
+	//b = NULL;
+	if (argc >= 2)
+	{
+		if (check_input(argc, argv) || check_dplctd_nbr(argc, argv))
+		{
+			write(1, "Error\n", 6);
+			return (0);
+		}
+	}
+	while (i < argc)
+	{
+		ft_printf("%s\n", argv[i]);
+		i++;
+	}
 	return (0);
 }

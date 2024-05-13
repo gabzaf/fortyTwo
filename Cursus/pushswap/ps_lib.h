@@ -19,13 +19,15 @@
 # include <ctype.h>
 # include <unistd.h>
 
-/*typedef struct s_node
+typedef struct s_list
 {
 	int	value;
-	struct	s_node	*next;
-}	t_node;*/
+	int	index;
+	struct	s_list	*next;
+}	t_list;
 
 int		ft_printf(const char *format, ...);
+int		check_dplctd_nbr(int argc, char **argv);
 void	ft_verify_format(va_list args, const char *str, int i, int *count);
 int		ft_strlen(const char *s);
 void	ft_putchar_ft_printf(const char c, int *count);
@@ -34,8 +36,9 @@ void	ft_putnbr_ft_printf(int nbr, int *count);
 void	ft_baseputnbr_ft_printf(unsigned int nbr, char *base, int *count);
 void	ft_pointer_printer(unsigned long ptr, char *base, int *count);
 void	ft_pointer_putnbr(unsigned long ptr, char *base, int *count);
-void    check_input(int argc, char **argv);
+int		check_input(int argc, char **argv);
 int     ft_atoi(const char *nptr);
+int	ft_atol(const char *nptr);
 int     ft_isdigit(int c);
 
 #endif

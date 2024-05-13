@@ -14,7 +14,7 @@ NAME		:= push_swap
 CC		:= cc
 CFLAGS		:= -Wall -Wextra -Werror
 RM		:= rm -rf
-SRCS		:= main.c ft_printf.c ft_printf_utils.c ft_pointer_printer.c ft_strlen.c ft_atoi.c ft_isdigit.c check_input.c 
+SRCS		:= main.c ft_printf.c ft_printf_utils.c ft_pointer_printer.c ft_strlen.c ft_atoi.c ft_isdigit.c check_input.c ft_atol.c 
 OBJS		:= $(SRCS:.c=.o)
 
 all: $(NAME)
