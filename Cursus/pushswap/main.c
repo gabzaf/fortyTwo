@@ -14,13 +14,11 @@
 
 int	main(int argc, char **argv)
 {
-	//t_list	*a;
-	//t_list	*b;
-	int	i;
+	t_list	*a;
+	t_list	*b;
+	int		*array;
 
-	i = 0;
-	//a = NULL;
-	//b = NULL;
+	b = NULL;
 	if (argc >= 2)
 	{
 		if (check_input(argc, argv) || check_dplctd_nbr(argc, argv))
@@ -28,11 +26,16 @@ int	main(int argc, char **argv)
 			write(1, "Error\n", 6);
 			return (0);
 		}
-	}
-	while (i < argc)
-	{
-		ft_printf("%s\n", argv[i]);
-		i++;
+		array = (int *)malloc(sizeof(int) * (argc - 1));
+		if (!array)
+			exit(0);
+		array_insertion(argc, argv, array);
+		a = (t_list *)malloc(sizeof(t_list));
+		if (!a)
+			exit(1);
+		a = NULL;
+		list_insertion(argc, argv, &a);
+		push_swap(array, a, b);
 	}
 	return (0);
 }

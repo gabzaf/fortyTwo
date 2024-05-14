@@ -40,5 +40,10 @@ int		check_input(int argc, char **argv);
 int     ft_atoi(const char *nptr);
 int	ft_atol(const char *nptr);
 int     ft_isdigit(int c);
+void	array_insertion(int argc, char **argv, int *array);
+void	list_insertion(int argc, char **argv, t_list **a);
+void	push_swap(int *array, t_list *a, t_list *b);
+int	sort_check(t_list *stack);
+int	stack_len(t_list *stack);
 
 #endif
