@@ -36,6 +36,8 @@ int	main(int argc, char **argv)
 		a = NULL;
 		list_insertion(argc, argv, &a);
 		push_swap(array, a, b);
+		free_stack(a, b);
+		free(array);
 	}
 	return (0);
 }

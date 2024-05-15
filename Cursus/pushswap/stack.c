@@ -1,6 +1,24 @@
 
 #include "ps_lib.h"
 
+void	free_stack(t_list *a, t_list *b)
+{
+	t_list	*temp;
+
+	while (a)
+	{
+		temp = a;
+		a = a->next;
+		free(temp);
+	}
+	while (b)
+	{
+		temp = b;
+		b = b->next;
+		free(temp);
+	}
+}
+
 void	node_insertion(t_list **head_node, int argv)
 {
 	t_list	*node;
