@@ -31,8 +31,12 @@ void	node_insertion(t_list **head_node, int argv)
 	*head_node = node;
 }
 
-void	list_insertion(int argc, char **argv, t_list **a)
+t_list	*list_insertion(int argc, char **argv)
 {
+	t_list	*stack;
+
+	stack = NULL;
 	while (--argc > 0)
-		node_insertion(a, ft_atoi(argv[argc]));
+		node_insertion(&stack, ft_atoi(argv[argc]));
+	return (stack);
 }

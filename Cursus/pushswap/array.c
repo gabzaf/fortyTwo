@@ -1,7 +1,7 @@
 
 #include "ps_lib.h"
 
-void	sort_array(int *array, int argc)
+/*void	bubble_sort(int *array, int argc)
 {
 	int	i;
 	int	j;
@@ -25,23 +25,21 @@ void	sort_array(int *array, int argc)
 		}
 		i++;
 	}
-}
+}*/
 
 void	array_insertion(int argc, char **argv, int *array)
 {
 	int	i;
 	int	j;
-	int	paramc;
+	//int	paramc;
 
 	i = 0;
 	j = 1;
-	paramc = argc;
+	//paramc = argc;
 	while (argc > 1)
 	{
 		array[i++] = ft_atoi(argv[j++]);
-		//i++;
-		//j++;
 		argc--;
 	}
-	sort_array(array, paramc);	
+	//bubble_sort(array, paramc);	
 }

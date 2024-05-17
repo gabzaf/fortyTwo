@@ -15,7 +15,7 @@ int	smallest_nbr(t_list *stack)
 	return (smallest);
 }
 
-void	five_items(t_list *a, t_list *b)
+void	five_items(t_list **a, t_list **b)
 {
 	int	smallest;
 	t_list	*head;
@@ -41,7 +41,7 @@ void	five_items(t_list *a, t_list *b)
 	push_a(a, b);
 }
 
-void	four_items(t_list *a, t_list *b)
+void	four_items(t_list **a, t_list **b)
 {
 	int	smallest;
 	t_list	*head;
@@ -62,7 +62,7 @@ void	four_items(t_list *a, t_list *b)
 	push_a(a, b);
 }
 
-void	three_items(t_list *a)
+void	three_items(t_list **a)
 {
 	int	first;
 	int	second;
@@ -89,7 +89,7 @@ void	three_items(t_list *a)
 	}
 }
 
-void	push_swap(int *array, t_list *a, t_list *b)
+void	push_swap(int *array, t_list **a, t_list **b)
 {
 	int	len;
 

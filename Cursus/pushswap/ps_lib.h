@@ -41,22 +41,22 @@ int     ft_atoi(const char *nptr);
 int	ft_atol(const char *nptr);
 int     ft_isdigit(int c);
 void	array_insertion(int argc, char **argv, int *array);
-void	list_insertion(int argc, char **argv, t_list **a);
-void	push_swap(int *array, t_list *a, t_list *b);
+t_list	*list_insertion(int argc, char **argv);
+void	push_swap(int *array, t_list **a, t_list **b);
 int	sort_check(t_list *stack);
 int	stack_len(t_list *stack);
-void	radix_sort(int *array, t_list *a, t_list *b);
-void	push_a(t_list *a, t_list *b);
-void	push_b(t_list *a, t_list *b);
-void	swap_a(t_list *a);
-void	swap_b(t_list *b);
-void	rotate_a(t_list *a);
-void	rotate_b(t_list *b);
-void	reverse_a(t_list *a);
-void	reverse_b(t_list *b);
+void	radix_sort(int *array, t_list **a, t_list **b);
+void	push_a(t_list **a, t_list **b);
+void	push_b(t_list **a, t_list **b);
+void	swap_a(t_list **a);
+void	swap_b(t_list **b);
+void	rotate_a(t_list **a);
+void	rotate_b(t_list **b);
+void	reverse_a(t_list **a);
+void	reverse_b(t_list **b);
 void	free_stack(t_list *a, t_list *b);
-void	three_items(t_list *a);
-void	four_items(t_list *a, t_list *b);
+void	three_items(t_list **a);
+void	four_items(t_list **a, t_list **b);
 
 
 #endif

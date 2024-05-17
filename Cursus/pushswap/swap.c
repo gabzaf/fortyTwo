@@ -1,7 +1,7 @@
 
 #include "ps_lib.h"
 
-void	ft_swap(t_list *stack)
+void	ft_swap(t_list **stack)
 {
 	int	temp_v;
 	t_list	*temp_list;
@@ -14,13 +14,13 @@ void	ft_swap(t_list *stack)
 	stack->next->value = temp_v;
 }
 
-void	swap_b(t_list *b)
+void	swap_b(t_list **b)
 {
 	ft_swap(b);
 	ft_printf("sb\n");
 }
 
-void	swap_a(t_list *a)
+void	swap_a(t_list **a)
 {
 	ft_swap(a);
 	ft_printf("sa\n");

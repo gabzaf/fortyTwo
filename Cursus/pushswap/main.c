@@ -18,6 +18,7 @@ int	main(int argc, char **argv)
 	t_list	*b;
 	int		*array;
 
+	a = NULL;
 	b = NULL;
 	if (argc >= 2)
 	{
@@ -30,12 +31,8 @@ int	main(int argc, char **argv)
 		if (!array)
 			exit(0);
 		array_insertion(argc, argv, array);
-		a = (t_list *)malloc(sizeof(t_list));
-		if (!a)
-			exit(1);
-		a = NULL;
-		list_insertion(argc, argv, &a);
-		push_swap(array, a, b);
+		a = list_insertion(argc, argv);
+		push_swap(array, &a, &b);
 		free_stack(a, b);
 		free(array);
 	}

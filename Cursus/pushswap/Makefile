@@ -12,7 +12,7 @@
 
 NAME		:= push_swap
 CC		:= cc
-CFLAGS		:= -Wall -Wextra -Werror
+CFLAGS		:= -Wall -Wextra -Werror -g
 RM		:= rm -rf
 SRCS		:= main.c ft_printf.c ft_printf_utils.c ft_pointer_printer.c ft_strlen.c ft_atoi.c ft_isdigit.c check_input.c ft_atol.c array.c stack.c sorting.c sorting_utils.c radix.c push.c swap.c rotate.c reverse.c
 OBJS		:= $(SRCS:.c=.o)

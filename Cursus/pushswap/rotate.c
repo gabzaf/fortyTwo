@@ -1,7 +1,7 @@
 
 #include "ps_lib.h"
 
-void	rotate_stack(t_list *stack)
+void	rotate_stack(t_list **stack)
 {
 	t_list	*head;
 	t_list	*tail;
@@ -17,13 +17,13 @@ void	rotate_stack(t_list *stack)
 	head->next = NULL;
 }
 
-void	rotate_b(t_list *b)
+void	rotate_b(t_list **b)
 {
 	rotate_stack(b);
 	ft_printf("rb\n");
 }
 
-void	rotate_a(t_list *a)
+void	rotate_a(t_list **a)
 {
 	rotate_stack(a);
 	ft_printf("ra\n");

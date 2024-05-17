@@ -1,7 +1,7 @@
 
 #include "ps_lib.h"
 
-void	ft_reverse(t_list *stack)
+void	ft_reverse(t_list **stack)
 {
 	t_list	*tail;
 	t_list	*prev;
@@ -20,13 +20,13 @@ void	ft_reverse(t_list *stack)
 	stack = tail;
 }
 
-void	reverse_b(t_list *b)
+void	reverse_b(t_list **b)
 {
 	ft_reverse(b);
 	ft_printf("rrb\n");
 }
 
-void	reverse_a(t_list *a)
+void	reverse_a(t_list **a)
 {
 	ft_reverse(a);
 	ft_printf("rra\n");
