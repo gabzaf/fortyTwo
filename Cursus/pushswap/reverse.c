@@ -6,18 +6,18 @@ void	ft_reverse(t_list **stack)
 	t_list	*tail;
 	t_list	*prev;
 
-	if (stack == NULL || stack->next == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
-	tail = stack;
+	tail = *stack;
 	prev = NULL;
 	while (tail->next != NULL)
 	{
 		prev = tail;
 		tail = tail->next;
 	}
-	tail->next = stack;
+	tail->next = *stack;
 	prev->next = NULL;
-	stack = tail;
+	*stack = tail;
 }
 
 void	reverse_b(t_list **b)

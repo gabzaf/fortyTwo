@@ -6,12 +6,12 @@ void	ft_swap(t_list **stack)
 	int	temp_v;
 	t_list	*temp_list;
 
-	if (stack == NULL || stack->next == NULL)
+	if (stack == NULL || (*stack)->next == NULL)
 		return ;
-	temp_v = stack->value;
-	temp_list = stack;
-	stack->value = temp_list->next->value;
-	stack->next->value = temp_v;
+	temp_v = (*stack)->value;
+	temp_list = *stack;
+	(*stack)->value = temp_list->next->value;
+	(*stack)->next->value = temp_v;
 }
 
 void	swap_b(t_list **b)

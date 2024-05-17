@@ -6,13 +6,13 @@ void	rotate_stack(t_list **stack)
 	t_list	*head;
 	t_list	*tail;
 
-	if (stack == NULL || stack->next == NULL)
+	if (stack == NULL || (*stack)->next == NULL)
 		return ;
-	head = stack;
-	tail = stack;
+	head = *stack;
+	tail = *stack;
 	while (tail->next != NULL)
 		tail = tail->next;
-	stack = head->next;
+	*stack = head->next;
 	tail->next = head;
 	head->next = NULL;
 }

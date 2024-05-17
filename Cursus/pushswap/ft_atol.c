@@ -2,7 +2,7 @@
 
 #include "ps_lib.h"
 
-int	ft_atol(const char *nptr)
+long	ft_atol(const char *nptr)
 {
 	long	i;
 	long	result;

@@ -27,10 +27,7 @@ int	main(int argc, char **argv)
 			write(1, "Error\n", 6);
 			return (0);
 		}
-		array = (int *)malloc(sizeof(int) * (argc - 1));
-		if (!array)
-			exit(0);
-		array_insertion(argc, argv, array);
+		array = array_insertion(argc, argv);
 		a = list_insertion(argc, argv);
 		push_swap(array, &a, &b);
 		free_stack(a, b);
