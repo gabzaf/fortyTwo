@@ -10,7 +10,7 @@ void	items_push(t_list **a, t_list **b, int bit)
 	len = stack_len(*a);
 	while (*a && len > 0)
 	{
-		if (!(*a)->index && bit)
+		if (!((*a)->index && bit))
 		{
 			push_b(a, b);
 			nbr_to_push++;
