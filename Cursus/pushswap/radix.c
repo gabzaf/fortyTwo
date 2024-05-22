@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   radix.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/20 12:46:58 by gamado-x          #+#    #+#             */
+/*   Updated: 2024/05/22 13:28:24 by gamado-x         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ps_lib.h"
 
@@ -10,7 +21,7 @@ void	items_push(t_list **a, t_list **b, int bit)
 	len = stack_len(*a);
 	while (*a && len > 0)
 	{
-		if (!((*a)->index && bit))
+		if (!((*a)->index & bit))
 		{
 			push_b(a, b);
 			nbr_to_push++;
@@ -28,7 +39,7 @@ void	items_push(t_list **a, t_list **b, int bit)
 
 void	index_set(int *array, t_list **a)
 {
-	int	i;
+	int		i;
 	t_list	*temp;
 
 	i = 0;
@@ -58,4 +69,3 @@ void	radix_sort(int *array, t_list **a, t_list **b)
 		bit = bit << 1;
 	}
 }
-

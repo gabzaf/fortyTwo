@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sorting.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/20 12:48:37 by gamado-x          #+#    #+#             */
+/*   Updated: 2024/05/21 17:44:02 by gamado-x         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ps_lib.h"
 
@@ -17,7 +28,7 @@ int	smallest_nbr(t_list *stack)
 
 void	five_items(t_list **a, t_list **b)
 {
-	int	smallest;
+	int		smallest;
 	t_list	*head;
 
 	head = *a;
@@ -43,7 +54,7 @@ void	five_items(t_list **a, t_list **b)
 
 void	four_items(t_list **a, t_list **b)
 {
-	int	smallest;
+	int		smallest;
 	t_list	*head;
 
 	head = *a;
@@ -102,7 +113,7 @@ void	push_swap(int *array, t_list **a, t_list **b)
 			three_items(a);
 		else if (len == 4)
 			four_items(a, b);
-		else if (len ==5)
+		else if (len == 5)
 			five_items(a, b);
 		else
 			radix_sort(array, a, b);

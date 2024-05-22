@@ -6,13 +6,13 @@
 /*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:16:09 by gamado-x          #+#    #+#             */
-/*   Updated: 2024/04/25 20:08:10 by gamado-x         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:26:55 by gamado-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps_lib.h"
 
-static int	check_long(char *str)
+int	check_long(char *str)
 {
 	if (-2147483648 < ft_atol(str) && ft_atol(str) <= 2147483647)
 		return (1);
@@ -20,7 +20,7 @@ static int	check_long(char *str)
 		return (0);
 }
 
-static int	check_int(char *argv)
+int	check_int(char *argv)
 {
 	int	i;
 
