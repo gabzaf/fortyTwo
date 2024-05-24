@@ -6,7 +6,7 @@
 /*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 17:36:10 by gamado-x          #+#    #+#             */
-/*   Updated: 2024/05/20 14:42:13 by gamado-x         ###   ########.fr       */
+/*   Updated: 2024/05/24 20:58:21 by gamado-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,44 +18,37 @@
 # include <unistd.h>
 # include <ctype.h>
 # include <unistd.h>
+# include <limits.h>
 
-typedef struct s_list
+typedef struct s_stack
 {
 	int				value;
 	int				index;
-	struct s_list	*next;
-}					t_list;
+	int				index_set;
+	struct s_stack	*next;
+}					t_stack;
 
-int		ft_printf(const char *format, ...);
 int		check_dplctd_nbr(int argc, char **argv);
-void	ft_verify_format(va_list args, const char *str, int i, int *count);
 int		ft_strlen(const char *s);
-void	ft_putchar_ft_printf(const char c, int *count);
-void	ft_putstr_ft_printf(const char *s, int *count);
-void	ft_putnbr_ft_printf(int nbr, int *count);
-void	ft_baseputnbr_ft_printf(unsigned int nbr, char *base, int *count);
-void	ft_pointer_printer(unsigned long ptr, char *base, int *count);
-void	ft_pointer_putnbr(unsigned long ptr, char *base, int *count);
 int		check_input(int argc, char **argv);
 int		ft_atoi(const char *nptr);
-int		ft_isdigit(int c);
 long	ft_atol(const char *nptr);
-int		*array_insertion(int argc, char **argv);
-t_list	*list_insertion(int argc, char **argv);
-void	push_swap(int *array, t_list **a, t_list **b);
-int		sort_check(t_list *stack);
-int		stack_len(t_list *stack);
-void	radix_sort(int *array, t_list **a, t_list **b);
-void	push_a(t_list **a, t_list **b);
-void	push_b(t_list **a, t_list **b);
-void	swap_a(t_list **a);
-void	swap_b(t_list **b);
-void	rotate_a(t_list **a);
-void	rotate_b(t_list **b);
-void	reverse_a(t_list **a);
-void	reverse_b(t_list **b);
-void	free_stack(t_list *a, t_list *b);
-void	three_items(t_list **a);
-void	four_items(t_list **a, t_list **b);
+void	push_swap(t_stack **a, t_stack **b);
+void	change(void (*op)(t_stack**), t_stack **head_node, char c);
+t_stack	*node_gen(int value);
+t_stack	*get_biggest(t_stack *stack);
+int		asc_sort_check(t_stack *stack);
+int		stack_len(t_stack *stack);
+t_stack	*get_tail(t_stack *stack);
+t_stack	*get_last_before_tail(t_stack *stack);
+void	big_sort_radix(t_stack **a, t_stack **b);
+void	push(t_stack **src, t_stack **dst, char c);
+void	swap(t_stack **stack);
+void	rotate(t_stack **stack);
+void	reverse(t_stack **stack);
+void	three_items_sort(t_stack **a);
+void	five_four_items_sort(t_stack **a, t_stack **b);
+void	set_index(int len, t_stack **stack);
+t_stack	*get_smallest(t_stack *stack);
 
 #endif

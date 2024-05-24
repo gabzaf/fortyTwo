@@ -6,7 +6,7 @@
 /*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:16:09 by gamado-x          #+#    #+#             */
-/*   Updated: 2024/05/22 13:26:55 by gamado-x         ###   ########.fr       */
+/*   Updated: 2024/05/23 21:02:13 by gamado-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	check_long(char *str)
 {
-	if (-2147483648 < ft_atol(str) && ft_atol(str) <= 2147483647)
+	if (INT_MIN <= ft_atol(str) && ft_atol(str) <= INT_MAX)
 		return (1);
 	else
 		return (0);

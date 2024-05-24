@@ -6,32 +6,29 @@
 /*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 12:46:27 by gamado-x          #+#    #+#             */
-/*   Updated: 2024/05/20 13:26:14 by gamado-x         ###   ########.fr       */
+/*   Updated: 2024/05/24 17:54:00 by gamado-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps_lib.h"
 
-void	ft_push(t_list **a, t_list **b)
+void	push(t_stack **src, t_stack **dst, char c)
 {
-	t_list	*head_b;
+	t_stack	*temp;
 
-	if (*b == NULL)
-		return ;
-	head_b = *b;
-	*b = head_b->next;
-	head_b->next = *a;
-	*a = head_b;
-}
-
-void	push_a(t_list **a, t_list **b)
-{
-	ft_push(a, b);
-	ft_printf("pa\n");
-}
-
-void	push_b(t_list **a, t_list **b)
-{
-	ft_push(b, a);
-	ft_printf("pb\n");
+	temp = *src;
+	*src = (*src)->next;
+	if (*dst == NULL)
+	{
+		*dst = temp;
+		(*dst)->next = NULL;
+	}
+	else
+	{
+		temp->next = *dst;
+		*dst = temp;
+	}
+	write(1, "p", 1);
+	write(1, &c, 1);
+	write(1, "\n", 1);
 }

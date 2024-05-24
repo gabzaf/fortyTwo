@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/20 12:56:42 by gamado-x          #+#    #+#             */
-/*   Updated: 2024/05/20 12:56:53 by gamado-x         ###   ########.fr       */
+/*   Created: 2024/05/24 14:16:26 by gamado-x          #+#    #+#             */
+/*   Updated: 2024/05/24 18:57:47 by gamado-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps_lib.h"
 
-int	ft_isdigit(int c)
+int	asc_order_check(t_stack **stack)
 {
-	if (c > 47 && c < 58)
-		return (c);
-	else
+	while (stack->next)
 	{
-		printf("Error\n");
-		exit (0);
+		if (stack->value < stack->next->value)
+			return (0);
+		stack = stack->next;
 	}
+	return (1);
 }

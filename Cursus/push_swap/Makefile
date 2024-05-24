@@ -6,15 +6,15 @@
 #    By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/25 17:45:51 by gamado-x          #+#    #+#              #
-#    Updated: 2024/04/25 19:54:14 by gamado-x         ###   ########.fr        #
+#    Updated: 2024/05/24 21:02:37 by gamado-x         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= push_swap
 CC		:= cc
-CFLAGS		:= -Wall -Wextra -Werror -g
+CFLAGS		:= -Wall -Wextra -Werror
 RM		:= rm -rf
-SRCS		:= main.c ft_printf.c ft_printf_utils.c ft_pointer_printer.c ft_strlen.c ft_atoi.c ft_isdigit.c check_input.c ft_atol.c array.c stack.c sorting.c sorting_utils.c radix.c push.c swap.c rotate.c reverse.c
+SRCS		:= main.c ft_strlen.c ft_atoi.c check_input.c ft_atol.c stack.c sorting.c sorting_utils.c push.c swap.c rotate.c reverse.c
 OBJS		:= $(SRCS:.c=.o)
 
 all: $(NAME)
