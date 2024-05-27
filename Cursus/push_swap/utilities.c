@@ -12,37 +12,7 @@
 
 #include "ps_lib.h"
 
-void    ft_clean(t_stack **a, t_stack **b, t_push *st)
-{
-        t_stack *temp;
-
-        while (*a)
-        {
-                temp = *a;
-                *a = (*a)->next;
-                free(temp);
-        }
-        while (*b)
-        {
-                temp = *b;
-                *b = (*b)->next;
-                free(temp);
-        }
-        if (st->error == true)
-                write(2, "Error\n", 6);
-}
-
-void	ft_free_split(char **tab)
-{
-	int	i;
-
-	i = -1;
-	while (tab[++i])
-		free(tab[i]);
-	free(tab);
-}
-
-void	ft_isdigit(char *str, t_push *st)
+void	ft_isdigit(char *str, t_sort_state *st)
 {
 	int	i;
 
@@ -51,11 +21,41 @@ void	ft_isdigit(char *str, t_push *st)
 	i = 0;
 	if ((str[i] == '-' || str[i] == '+')
 		&& (str[i + 1] != '\0' && str[i + 1] != ' '))
-			i++;
+		i++;
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
 			st->error = true;
 		i++;
 	}
+}
+
+void	ft_free_split(char **split)
+{
+	int	i;
+
+	i = -1;
+	while (split[++i])
+		free(split[i]);
+	free(split);
+}
+
+void	ft_clean(t_stack **stack_a, t_stack **stack_b, t_sort_state *st)
+{
+	t_stack	*tmp;
+
+	while (*stack_a)
+	{
+		tmp = *stack_a;
+		*stack_a = (*stack_a)->next;
+		free(tmp);
+	}
+	while (*stack_b)
+	{
+		tmp = *stack_b;
+		*stack_b = (*stack_b)->next;
+		free(tmp);
+	}
+	if (st->error == true)
+		write(2, "Error\n", 6);
 }

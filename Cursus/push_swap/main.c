@@ -16,19 +16,19 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	t_push	st;
+	t_sort_state	st;
 
 	if (argc < 2)
 		return (0);	
 	a = NULL;
 	b = NULL;
-	st = (t_push){0};
-	initialize_stack(argc, argv, &a, &st);
+	st = (t_sort_state){0};
+	initialize_stack(&a, argc, argv, &st);
 	if (!st.error)
 	{
-		if (st.size_of_a > 3)
+		if (st.a_len > 3)
 			sorting(&a, &b, &st);
-		sort_three_items(&a, &b, &st);
+		sort_three(&a, &b, &st);
 	}
 	ft_clean(&a, &b, &st);
 	return (st.error);

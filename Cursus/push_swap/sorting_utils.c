@@ -26,74 +26,68 @@ bool	ft_lstsorted(t_stack *stack)
 	return (true);
 }
 
-int     get_smallest(t_stack *stack)
+int	ft_smallest(t_stack *stack)
 {
-        t_stack                 *temp;
-        int                             smallest;
+	t_stack			*tmp;
+	int				smallest;
 
-        temp = stack;
-        smallest = temp->value;
-        while (temp)
-        {
-                if (temp->value < smallest)
-                        smallest = temp->value;
-                temp = temp->next;
-        }
-        return (smallest);
+	tmp = stack;
+	smallest = tmp->value;
+	while (tmp)
+	{
+		if (tmp->value < smallest)
+			smallest = tmp->value;
+		tmp = tmp->next;
+	}
+	return (smallest);
 }
 
-int     get_biggest(t_stack *stack)
+int	ft_biggest(t_stack *stack)
 {
-        t_stack                 *temp;
-        int                             biggest;
+	t_stack			*tmp;
+	int				biggest;
 
-        temp = stack;
-        biggest = temp->value;
-        while (temp)
-        {
-                if (temp->value > biggest)
-                        biggest = temp->value;
-                temp = temp->next;
-        }
-        return (biggest);
+	tmp = stack;
+	biggest = tmp->value;
+	while (tmp)
+	{
+		if (tmp->value > biggest)
+			biggest = tmp->value;
+		tmp = tmp->next;
+	}
+	return (biggest);
 }
 
-void    sort_three_items(t_stack **a, t_stack **b, t_push *st)
+t_stack	*ft_lstlast(t_stack *stack)
 {
-        if (st->size_of_a == 2)
-                swap(a, b, SA, st);
-        while (ft_lstsorted(*a) == false)
-        {
-                if ((*a)->value == get_smallest(*a)
-                        && (*a)->next->value == get_biggest(*a))
-                        reverse(a, b, RRA, st);
-                else if ((*a)->value == get_biggest(*a)
-                        && ft_lstlast(*a)->value == get_smallest(*a))
-                        swap(a, b, SA, st);
-                else if (ft_lstlast(*a)->value == get_smallest(*a)
-                        && (*a)->next->value == get_biggest(*a))
-                        reverse(a, b, RRA, st);
-                else if ((*a)->value == get_biggest(*a)
-                        && (*a)->next->value == get_smallest(*a))
-                        rotate(a, b, RA, st);
-                else if (ft_lstlast(*a)->value == get_biggest(*a)
-                        && (*a)->next->value == get_smallest(*a))
-                        swap(a, b, SA, st);
-                else
-                        break ;
-        }
+	t_stack	*last;
+
+	if (!stack)
+		return (NULL);
+	last = stack;
+	while (last->next)
+		last = last->next;
+	return (last);
 }
 
-t_stack *ft_lstlast(t_stack *stack)
+void	sort_three(t_stack **a, t_stack **b, t_sort_state *st)
 {
-        t_stack *last;
-
-        if (!stack)
-                return (NULL);
-        last = stack;
-        while (last->next)
-                last = last->next;
-        return (last);
+	if (st->a_len == 2)
+		swap(a, b, SA, st);
+	while (ft_lstsorted(*a) == false)
+	{
+		if ((*a)->value == ft_smallest(*a) && (*a)->next->value == ft_biggest(*a))
+			reverse(a, b, RRA, st);
+		else if ((*a)->value == ft_biggest(*a) && ft_lstlast(*a)->value == ft_smallest(*a))
+			swap(a, b, SA, st);
+		else if (ft_lstlast(*a)->value == ft_smallest(*a) && (*a)->next->value == ft_biggest(*a))
+			reverse(a, b, RRA, st);
+		else if ((*a)->value == ft_biggest(*a) && (*a)->next->value == ft_smallest(*a))
+			rotate(a, b, RA, st);
+		else if (ft_lstlast(*a)->value == ft_biggest(*a) && (*a)->next->value == ft_smallest(*a))
+			swap(a, b, SA, st);
+		else
+			break ;
+	}
 }
-
 

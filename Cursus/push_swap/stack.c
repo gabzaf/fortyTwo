@@ -12,19 +12,6 @@
 
 #include "ps_lib.h"
 
-static void	check_dplcts(t_stack *a, t_push *st, int value)
-{
-	t_stack	*temp;
-
-	temp = a;
-	while (temp->next)
-	{
-		if (temp->value == value)
-			st->error = true;
-		temp = temp->next;
-	}
-}
-
 static t_stack	*ft_lstnew(int value)
 {
 	t_stack	*new;
@@ -39,40 +26,40 @@ static t_stack	*ft_lstnew(int value)
 	return (new);
 }
 
-static void	ft_lstadd_back(t_stack **a, int value, t_push *st)
+static void	ft_lstadd_back(t_stack **stack, int value, t_sort_state *st)
 {
-	t_stack	*last;
-	t_stack *new;
+	t_stack	*tail;
+	t_stack	*new;
 
-        if (!a)
-                st->error = true;
-        if (st->error == true)
-                return ;
-        new = ft_lstnew(value);
-        if (!new)
-        {
-                st->error = true;
-                return ;
-        }
-        st->size_of_a++;
-        if (!*a)
-        {
-                *a = new;
-                return ;
-        }
-        last = ft_lstlast(*a);
-        new->prev = last;
-        last->next = new;
+	if (!stack)
+		st->error = true;
+	if (st->error == true)
+		return ;
+	new = ft_lstnew(value);
+	if (!new)
+	{
+		st->error = true;
+		return ;
+	}
+	st->a_len++;
+	if (!*stack)
+	{
+		*stack = new;
+		return ;
+	}
+	tail = ft_lstlast(*stack);
+	new->prev = tail;
+	tail->next = new;
 }
 
-static int	ft_atoi(char *str, t_push *st)
+static int	ft_atoi(char *str, t_sort_state *st)
 {
-	int	i;
-	int	sign;
-	long		nbr;
+	int		sign;
+	int		i;
+	long	nbr;
 
-	i = 0;
 	sign = 1;
+	i = 0;
 	nbr = 0;
 	if (st->error == true)
 		return (0);
@@ -90,7 +77,20 @@ static int	ft_atoi(char *str, t_push *st)
 	return (nbr * sign);
 }
 
-void	initialize_stack(int argc, char **argv, t_stack **a, t_push *st)
+static void	check_dplct(t_stack *stack_a, t_sort_state *st, int value)
+{
+	t_stack	*tmp;
+
+	tmp = stack_a;
+	while (tmp->next)
+	{
+		if (tmp->value == value)
+			st->error = true;
+		tmp = tmp->next;
+	}
+}
+
+void	initialize_stack(t_stack **a, int argc, char **argv, t_sort_state *st)
 {
 	int	i;
 	int	value;
@@ -108,9 +108,9 @@ void	initialize_stack(int argc, char **argv, t_stack **a, t_push *st)
 		ft_isdigit(argv[i], st);
 		value = ft_atoi(argv[i], st);
 		if (st->error == true)
-			break;
+			break ;
 		ft_lstadd_back(a, value, st);
-		check_dplcts(*a, st, value);
+		check_dplct(*a, st, value);
 	}
 	if (argc == 2)
 		ft_free_split(argv);

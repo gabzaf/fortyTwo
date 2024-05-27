@@ -13,58 +13,64 @@
 #ifndef PS_LIB_H
 # define PS_LIB_H
 # include <stdio.h>
-# include <stdlib.h>
 # include <unistd.h>
+# include <string.h>
+# include <stdlib.h>
 # include <limits.h>
 # include <stdbool.h>
 
 typedef struct s_stack
 {
-	int				value;
 	int				index;
+	int				value;
 	struct s_stack	*next;
 	struct s_stack	*prev;
-}					t_stack;
+}	t_stack;
 
-typedef struct s_push
+typedef struct s_sort_state
 {
-	bool		error;
-	bool		checker;
-	int			rotate[6];
-	int			size_of_a;
-	int			size_of_b;
-}					t_push;
+	bool			error;
+	bool			checker;
+	int				rotate[6];
+	int				a_len;
+	int				b_len;
+}	t_sort_state;
 
-enum e_instruction
+enum e_moves
 {
-   	RA,
-        RB,
-        RRA,
-        RRB,
-        RR,
-        RRR,
-        SA,
-        SB,
-        SS,
-        PA,
-        PB	
+	RA,
+	RB,
+	RRA,
+	RRB,
+	RR,
+	RRR,
+	SA,
+	SB,
+	SS,
+	PA,
+	PB,
 };
 
-char	**ft_split(char const *str, char c);
-void	initialize_stack(int argc, char **argv, t_stack **a, t_push *st);
-void	ft_isdigit(char *str, t_push *st);
-void	ft_free_split(char **tab);
-bool	ft_lstsorted(t_stack *stack);
-void	sorting(t_stack **a, t_stack **b, t_push *st);
-void    sort_three_items(t_stack **a, t_stack **b, t_push *st);
-void	push(t_stack **a, t_stack **b, int instruction, t_push *st);
-void    get_move(t_stack **a, t_stack **b, t_push *st, int stack);
-void    swap(t_stack **a, t_stack **b, int instruction, t_push *st);
-t_stack *ft_lstlast(t_stack *stack);
-int     	get_smallest(t_stack *stack);
-int     	get_biggest(t_stack *stack);
-void    rotate(t_stack **a, t_stack **b, int instruction, t_push *st);
-void    reverse(t_stack **a, t_stack **b, int instruction, t_push *st);
-void    ft_clean(t_stack **a, t_stack **b, t_push *st);
+void			push(t_stack **a, t_stack **b, int instruction, t_sort_state *st);
+void			swap(t_stack **a, t_stack **b, int instruction, t_sort_state *st);
+void			rotate(t_stack **a, t_stack **b, int move, t_sort_state *st);
+void			reverse(t_stack **a, t_stack **b, int mv, t_sort_state *st);
+
+void			ft_free_split(char **split);
+char			**ft_split(const char *s, char c);
+void			ft_isdigit(char *str, t_sort_state *st);
+void			initialize_stack(t_stack **a, int argc, char **argv, t_sort_state *st);
+
+void			sorting(t_stack **a, t_stack **b, t_sort_state *st);
+void			get_moves(t_stack **a, t_stack **b, t_sort_state *st, int stack);
+void			sort_three(t_stack **a, t_stack **b, t_sort_state *st);
+
+t_stack			*ft_lstlast(t_stack *stack);
+int				ft_biggest(t_stack *stack);
+int				ft_smallest(t_stack *stack);
+bool			ft_lstsorted(t_stack *stack);
+void			ft_clean(t_stack **stack_a, t_stack **stack_b, t_sort_state *st);
+
+void			ft_printlist(t_stack *stack_a, t_stack *stack_b, t_sort_state *st);
 
 #endif
