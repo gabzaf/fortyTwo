@@ -6,7 +6,7 @@
 /*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 18:17:37 by gamado-x          #+#    #+#             */
-/*   Updated: 2024/05/26 14:43:43 by gamado-x         ###   ########.fr       */
+/*   Updated: 2024/05/28 13:16:15 by gamado-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static char	**split_util(char **tab, char const *str, char c)
 			tab[j++] = ft_alloc_and_insert(str, index, i);
 			index = -1;
 		}
-		i++;				
+		i++;
 	}
 	tab[j] = 0;
 	return (tab);

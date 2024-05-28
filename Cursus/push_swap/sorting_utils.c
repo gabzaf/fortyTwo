@@ -6,7 +6,7 @@
 /*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 20:02:13 by gamado-x          #+#    #+#             */
-/*   Updated: 2024/05/26 15:02:28 by gamado-x         ###   ########.fr       */
+/*   Updated: 2024/05/28 13:26:01 by gamado-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,21 +73,28 @@ t_stack	*ft_lstlast(t_stack *stack)
 void	tiny_sort(t_stack **a, t_stack **b, t_sort_state *st)
 {
 	if (st->a_len == 2)
-		swap(a, b, SA, st);
+	{
+		if ((*a)->value > (*a)->next->value)
+			swap(a, b, SA, st);
+	}
 	while (ft_lstsorted(*a) == false)
 	{
-		if ((*a)->value == ft_smallest(*a) && (*a)->next->value == ft_biggest(*a))
+		if ((*a)->value == ft_smallest(*a)
+			&& (*a)->next->value == ft_biggest(*a))
 			reverse(a, b, RRA, st);
-		else if ((*a)->value == ft_biggest(*a) && ft_lstlast(*a)->value == ft_smallest(*a))
+		else if ((*a)->value == ft_biggest(*a)
+			&& ft_lstlast(*a)->value == ft_smallest(*a))
 			swap(a, b, SA, st);
-		else if (ft_lstlast(*a)->value == ft_smallest(*a) && (*a)->next->value == ft_biggest(*a))
+		else if (ft_lstlast(*a)->value == ft_smallest(*a)
+			&& (*a)->next->value == ft_biggest(*a))
 			reverse(a, b, RRA, st);
-		else if ((*a)->value == ft_biggest(*a) && (*a)->next->value == ft_smallest(*a))
+		else if ((*a)->value == ft_biggest(*a)
+			&& (*a)->next->value == ft_smallest(*a))
 			rotate(a, b, RA, st);
-		else if (ft_lstlast(*a)->value == ft_biggest(*a) && (*a)->next->value == ft_smallest(*a))
+		else if (ft_lstlast(*a)->value == ft_biggest(*a)
+			&& (*a)->next->value == ft_smallest(*a))
 			swap(a, b, SA, st);
 		else
 			break ;
 	}
 }
-

@@ -6,7 +6,7 @@
 /*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 21:04:31 by gamado-x          #+#    #+#             */
-/*   Updated: 2024/05/26 15:03:17 by gamado-x         ###   ########.fr       */
+/*   Updated: 2024/05/28 13:17:59 by gamado-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ static void	set_values(t_sort_state *st, int *rotate, bool init)
 	set_values_aux(st, rotate);
 }
 
-static void	calc_b_few_moves(t_stack **a, t_stack **b, t_sort_state *st, t_stack *node)
+static void	calc_b_few_moves(t_stack **a, t_stack **b, \
+					t_sort_state *st, t_stack *node)
 {
 	int		index;
 	int		rotate[6];
@@ -94,7 +95,8 @@ static void	calc_b_few_moves(t_stack **a, t_stack **b, t_sort_state *st, t_stack
 	return (set_values(st, rotate, false));
 }
 
-static void	calc_a_few_moves(t_stack **a, t_stack **b, t_sort_state *st, t_stack *node)
+static void	calc_a_few_moves(t_stack **a, t_stack **b, \
+					t_sort_state *st, t_stack *node)
 {
 	int		index;
 	int		rotate[6];

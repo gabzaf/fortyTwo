@@ -6,7 +6,7 @@
 /*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 17:36:10 by gamado-x          #+#    #+#             */
-/*   Updated: 2024/05/26 15:07:19 by gamado-x         ###   ########.fr       */
+/*   Updated: 2024/05/28 13:33:51 by gamado-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,26 +51,28 @@ enum e_moves
 	PB,
 };
 
-void			push(t_stack **a, t_stack **b, int instruction, t_sort_state *st);
-void			swap(t_stack **a, t_stack **b, int instruction, t_sort_state *st);
-void			rotate(t_stack **a, t_stack **b, int move, t_sort_state *st);
-void			reverse(t_stack **a, t_stack **b, int mv, t_sort_state *st);
-
+void			push(t_stack **a, t_stack **b, int instruction, \
+				t_sort_state *st);
+void			swap(t_stack **a, t_stack **b, int instruction, \
+				t_sort_state *st);
+void			rotate(t_stack **a, t_stack **b, int move, \
+				t_sort_state *st);
+void			reverse(t_stack **a, t_stack **b, int mv, \
+				t_sort_state *st);
 void			ft_free_split(char **split);
 char			**ft_split(const char *s, char c);
 void			ft_isdigit(char *str, t_sort_state *st);
-void			initialize_stack(t_stack **a, int argc, char **argv, t_sort_state *st);
-
+void			initialize_stack(t_stack **a, int argc,	\
+				char **argv, t_sort_state *st);
 void			sorting(t_stack **a, t_stack **b, t_sort_state *st);
-void			get_moves(t_stack **a, t_stack **b, t_sort_state *st, int stack);
+void			get_moves(t_stack **a, t_stack **b, t_sort_state *st, \
+				int stack);
 void			tiny_sort(t_stack **a, t_stack **b, t_sort_state *st);
-
 t_stack			*ft_lstlast(t_stack *stack);
 int				ft_biggest(t_stack *stack);
 int				ft_smallest(t_stack *stack);
 bool			ft_lstsorted(t_stack *stack);
-void			ft_clean(t_stack **stack_a, t_stack **stack_b, t_sort_state *st);
-
-void			ft_printlist(t_stack *stack_a, t_stack *stack_b, t_sort_state *st);
+void			ft_clean(t_stack **stack_a, t_stack **stack_b, \
+				t_sort_state *st);
 
 #endif
