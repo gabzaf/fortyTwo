@@ -92,7 +92,7 @@ void	sorting(t_stack **a, t_stack **b, t_sort_state *st)
 		move(a, b, st);
 		push(a, b, PB, st);
 	}
-	sort_three(a, b, st);
+	tiny_sort(a, b, st);
 	while (st->b_len)
 	{
 		set_a_index(a, b);

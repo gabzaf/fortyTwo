@@ -63,7 +63,7 @@ void			initialize_stack(t_stack **a, int argc, char **argv, t_sort_state *st);
 
 void			sorting(t_stack **a, t_stack **b, t_sort_state *st);
 void			get_moves(t_stack **a, t_stack **b, t_sort_state *st, int stack);
-void			sort_three(t_stack **a, t_stack **b, t_sort_state *st);
+void			tiny_sort(t_stack **a, t_stack **b, t_sort_state *st);
 
 t_stack			*ft_lstlast(t_stack *stack);
 int				ft_biggest(t_stack *stack);

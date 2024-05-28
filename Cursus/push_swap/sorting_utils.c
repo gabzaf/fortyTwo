@@ -70,7 +70,7 @@ t_stack	*ft_lstlast(t_stack *stack)
 	return (last);
 }
 
-void	sort_three(t_stack **a, t_stack **b, t_sort_state *st)
+void	tiny_sort(t_stack **a, t_stack **b, t_sort_state *st)
 {
 	if (st->a_len == 2)
 		swap(a, b, SA, st);

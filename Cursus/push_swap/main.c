@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 	{
 		if (st.a_len > 3)
 			sorting(&a, &b, &st);
-		sort_three(&a, &b, &st);
+		tiny_sort(&a, &b, &st);
 	}
 	ft_clean(&a, &b, &st);
 	return (st.error);
