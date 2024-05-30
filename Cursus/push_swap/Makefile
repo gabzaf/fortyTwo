@@ -14,7 +14,7 @@ NAME		:= push_swap
 CC		:= cc
 CFLAGS		:= -Wall -Wextra -Werror -g
 RM		:= rm -rf
-SRCS		:= main.c stack.c utilities.c ft_split.c sorting.c sorting_utils.c get_moves.c push_or_swap.c rot_rev.c
+SRCS		:= main.c stack.c utilities.c ft_split.c sorting.c sorting_utils.c get_moves.c push_or_swap.c rot_rev.c validation.c
 OBJS		:= $(SRCS:.c=.o)
 
 all: $(NAME)

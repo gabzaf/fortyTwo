@@ -56,7 +56,7 @@ static int	ft_atoi(char *str, t_sort_state *st)
 {
 	int		sign;
 	int		i;
-	int		nbr;
+	long		nbr;
 
 	sign = 1;
 	i = 0;
@@ -74,7 +74,9 @@ static int	ft_atoi(char *str, t_sort_state *st)
 		if (nbr < 0)
 			st->error = true;
 	}
-	return (nbr * sign);
+	if ((nbr * sign) > 2147483647 || (nbr * sign) < -2147483648)
+			st->error = true;
+	return ((int)(nbr * sign));
 }
 
 static void	check_dplct(t_stack *stack_a, t_sort_state *st, int value)

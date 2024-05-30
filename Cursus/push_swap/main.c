@@ -18,11 +18,13 @@ int	main(int argc, char **argv)
 	t_stack			*b;
 	t_sort_state	st;
 
-	if (argc <= 2)
+	if (argc == 1)
 		return (0);
+	st = (t_sort_state){0};
+	if (argc == 2)
+		return (validation(argv));
 	a = NULL;
 	b = NULL;
-	st = (t_sort_state){0};
 	initialize_stack(&a, argc, argv, &st);
 	if (!st.error)
 	{

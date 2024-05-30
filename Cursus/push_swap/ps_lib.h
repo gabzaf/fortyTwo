@@ -74,5 +74,6 @@ int				ft_smallest(t_stack *stack);
 bool			ft_lstsorted(t_stack *stack);
 void			ft_clean(t_stack **stack_a, t_stack **stack_b, \
 				t_sort_state *st);
+int	validation(char **argv);
 
 #endif
