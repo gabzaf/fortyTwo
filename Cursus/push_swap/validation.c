@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validation.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/31 10:17:21 by gamado-x          #+#    #+#             */
+/*   Updated: 2024/05/31 10:22:35 by gamado-x         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ps_lib.h"
 
@@ -15,7 +25,7 @@ int	ft_o_strlen(char **av)
 long long int	ft_o_atoi(const char *str)
 {
 	long long int	result;
-	int	isneg;
+	int				isneg;
 
 	isneg = 1;
 	result = 0;
@@ -55,6 +65,5 @@ int	validation(char **argv)
 		}
 		i++;
 	}
-
 	return (0);
 }

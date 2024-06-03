@@ -6,7 +6,7 @@
 /*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 18:12:58 by gamado-x          #+#    #+#             */
-/*   Updated: 2024/05/28 13:26:26 by gamado-x         ###   ########.fr       */
+/*   Updated: 2024/05/31 10:18:25 by gamado-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	ft_atoi(char *str, t_sort_state *st)
 {
 	int		sign;
 	int		i;
-	long		nbr;
+	long	nbr;
 
 	sign = 1;
 	i = 0;
@@ -75,7 +75,7 @@ static int	ft_atoi(char *str, t_sort_state *st)
 			st->error = true;
 	}
 	if ((nbr * sign) > 2147483647 || (nbr * sign) < -2147483648)
-			st->error = true;
+		st->error = true;
 	return ((int)(nbr * sign));
 }
 

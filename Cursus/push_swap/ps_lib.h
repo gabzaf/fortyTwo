@@ -6,7 +6,7 @@
 /*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 17:36:10 by gamado-x          #+#    #+#             */
-/*   Updated: 2024/05/28 13:33:51 by gamado-x         ###   ########.fr       */
+/*   Updated: 2024/05/31 10:20:50 by gamado-x         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,6 @@ int				ft_smallest(t_stack *stack);
 bool			ft_lstsorted(t_stack *stack);
 void			ft_clean(t_stack **stack_a, t_stack **stack_b, \
 				t_sort_state *st);
-int	validation(char **argv);
+int				validation(char **argv);
 
 #endif
