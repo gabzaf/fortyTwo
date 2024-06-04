@@ -18,9 +18,9 @@ int	main()
 		if (i % 15 == 0)
 			write (1, "fizzbuzz", 8);
 		else if (i % 5 == 0)
-			write (1, "fizzbuzz", 8);
+			write (1, "buzz", 8);
 		else if (i % 3 == 0)
-			write (1, "fizzbuzz", 8);
+			write (1, "fizz", 8);
 		else
 			ft_print_nbr(i);
 		write (1, "\n", 1);
