@@ -1,54 +1,36 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   rot_13.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gamado-x <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/26 16:45:43 by gamado-x          #+#    #+#             */
-/*   Updated: 2024/04/26 17:08:14 by gamado-x         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <unistd.h>
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
-void	replacer(char c)
-{
-	if (c >= 65 && c <= 90)
-	{
-		if (c < 78)
-			ft_putchar(c + 13);
-		else
-			ft_putchar(c - 13);
-	}
-	else if (c >= 97 && c <= 122)
-	{
-		if (c < 110)
-			ft_putchar(c + 13);
-		else
-			ft_putchar(c - 13);
-	}
-	else
-		ft_putchar(c);
-}
-
-int	main(int argc, char **argv)
+int	main (int ac, char ** av)
 {
 	int	i;
+	char	c;
 
-	i = 0;
-	if (argc == 2)
+	if (ac == 2)
 	{
-		while (argv[1][i])
+		i = 0;
+		while (av[1][i])
 		{
-			replacer(argv[1][i]);
+			if (av[1][i] >= 'A' && av[1][i] <= 'Z')
+			{
+				if (av[1][i] <= 'M')
+					c = av[1][i] + 13;
+				else
+					c = av[1][i] - 13;
+				write (1, &c, 1);
+			}
+			else if (av[1][i] >= 'a' && av[1][i] <= 'z')
+			{
+				if (av[1][i] <= 'm')
+					c = av[1][i] + 13;
+				else
+					c = av[1][i] - 13;
+				write (1, &c, 1);
+			}
+			else
+				write (1, &av[1][i], 1);
 			i++;
 		}
 	}
-	ft_putchar('\n');
+	write (1, "\n", 1);
+	return (0);
 }
