@@ -9,7 +9,7 @@ void	ft_putstr(char *str, int *length)
 		*length += write(1, str++, 1);	       
 }
 
-void	ft_putnbr(int nbr, int base, int *length)
+void	ft_putnbr(long long int nbr, int base, int *length)
 {
 	if (nbr < 0)
 	{
@@ -29,18 +29,18 @@ int	ft_printf(const char *fmt, ...)
 	va_start(pntr, fmt);
 	while (*fmt)
 	{
-		if ((*fmt == '%' && (*(fmt + 1) == 's' || *(fmt + 1) == 'd' || *(fmt + 1) == 'x')));
+		if ((*fmt == '%') && ((*(fmt + 1) == 's') || (*(fmt + 1) == 'd') || (*(fmt + 1) == 'x')))
 		{
 			fmt++;
 			if (*fmt == 's')
-				put_str(va_arg(pntr, char *), &length);
+				ft_putstr(va_arg(pntr, char *), &length);
 			else if (*fmt == 'd')
-				ft_putnbr((va_arg(pntr, int), 10, &length);
-			else if
-				ft_putnbr((va_arg(pntr, int), 16, &length);
+				ft_putnbr((long long int)va_arg(pntr, int), 10, &length);
+			else if (*fmt == 'x')
+				ft_putnbr((long long int)va_arg(pntr, unsigned int), 16, &length);
 		}
 		else
-			lenght = lenght + write(1, fmt, 1);
+			length = length + write(1, fmt, 1);
 		fmt++;
 	}
 	return (va_end(pntr), length);
