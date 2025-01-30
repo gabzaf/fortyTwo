@@ -1,28 +1,27 @@
-#include <string.h>
 #include <unistd.h>
-#include <sys/wait.h>
+#include <string.h>
 #include <stdlib.h>
+#include <sys/wait.h>
 
 void	err(char *str)
 {
-	while(*str)
+	while (*str)
 		write(2, str++, 1);
 }
 
 void	set_pipe(int has_pipe, int *fd, int end)
 {
-	if (has_pipe && (dup2(fd[end], end) == -1 || close(fd[0]) == -1 ||
-				close(fd[1]) == -1))
-		err();
+	if (has_pipe && (dup2(fd[end], end) == -1 || close(fd[0]) == -1 || close(fd[1]) == -1))
+		err("fatal\n"), exit(1);
 }
 
-int	cd(char  **av, int i)
+int	cd(char **av, int i)
 {
 	if (i != 2)
 		return err("error: cd: bad arguments\n"), 1;
 	if (chdir(av[1]) == -1)
 		return err("error: cd: cannot change directory to "), err(av[1]), err("\n"), 1;
-	return 0;
+	return (0);
 }
 
 int	exec(char **av, int i, char **envp)
@@ -34,7 +33,7 @@ int	exec(char **av, int i, char **envp)
 
 	has_pipe = av[i] && !strcmp(av[i], "|");
 	if (!has_pipe && !strcmp(*av, "cd"))
-		return cd(av, i);
+		return (cd(av, i));
 	if (has_pipe && pipe(fd) == -1)
 		err("error: fatal\n"), exit(1);
 	if ((pid = fork()) == -1)
@@ -44,7 +43,7 @@ int	exec(char **av, int i, char **envp)
 		av[i] = 0;
 		set_pipe(has_pipe, fd, 1);
 		if (!strcmp(*av, "cd"))
-		exit(cd(av, i));
+			exit(cd(av, i));
 		execve(*av, av, envp);
 		err("error: cannot execute "), err(*av), err("\n"), exit(1);
 	}
@@ -70,5 +69,5 @@ int	main(int ac, char **av, char **envp)
 		if (i)
 			status = exec(av, i, envp);
 	}
-	return status;
+	return (status);
 }
