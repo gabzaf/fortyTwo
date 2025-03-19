@@ -1,0 +1,64 @@
+
+Devices on a network, identified by their IP addresses, don’t inherently communicate with each other across different networks without some
+mechanism to facilitate that communication. This is where routing and by extension, the router as a network gateway—comes into play. 
+
+Every device on a network, whether it’s a computer, a smartphone or a router, is assigned an IP address that uniquely identifies it within that
+network. Networks are typically segmented, think of them as separate islands. For example, my home Wi-Fi might be one network (e.g., 192.168.1.0/24),
+while my ISP’s network is another. By default, devices on one network can’t send packets directly to devices on a different network because they
+lack a direct path. This is where the router steps in.
+
+The router—serves as the connection between these networks. It has interfaces connected to multiple networks (e.g., one interface on my
+local network and another on the ISP’s network). When a device on my network wants to send a packet to another network, it forwards the packet to
+the router, which then decides where to send it next. This decision-making process is called routing.
+
+Routing is the process of moving packets from one network to another. The router examines the destination IP address in each packet’s header and
+determines the next step in its journey. To do this efficiently, the router relies on its routing table, which acts like a map or a set of
+instructions telling it where to send packets based on their destination.
+
+A routing table is a critical component of any router. It’s essentially a database stored in the router’s memory that lists paths—or routes—to
+various network destinations. Each entry in the routing table provides specific information, typically including: Destination Network, Next Hop,
+Interface, Metric and Gateway.
+
+A simplified example of what a routing table might look like:
+
+Destination     Gateway         Interface     Metric
+192.168.1.0/24  -              eth0          1
+10.0.0.0/24     192.168.1.1    eth0          2
+0.0.0.0/0       203.0.113.1    eth1          10
+
+- 192.168.1.0/24: Traffic to this local network goes directly out of eth0 (no gateway needed).
+- 10.0.0.0/24: Traffic to this network is sent to the gateway 192.168.1.1 via eth0.
+- 0.0.0.0/0: This is the default route. Any packet with a destination not matching the above entries is sent to 203.0.113.1 (e.g., your ISP’s router)
+via eth1.
+
+The default route (0.0.0.0/0) is especially important it’s the catch-all for traffic headed outside the local network, like when I'm browsing
+the internet.
+
+HOW ROUTING HAPPENS
+
+Let’s walk through an example:
+
+A device on my network (say, 192.168.1.10) wants to send a packet to a server at 8.8.8.8 (Google’s DNS server).
+The device checks its own routing table. If it doesn’t know how to reach 8.8.8.8 directly, it sends the packet to its configured default gateway
+(e.g., my router at 192.168.1.1).
+The router receives the packet and consults its routing table. Since 8.8.8.8 doesn’t match any specific local network entry, it falls to the default
+route (0.0.0.0/0), which points to the ISP’s gateway (e.g., 203.0.113.1).
+The router forwards the packet out of the appropriate interface (eth1) to the ISP’s gateway. This process repeats across multiple routers on the
+internet until the packet reaches 8.8.8.8.
+
+Routing tables can be static (manually configured) or dynamic (updated automatically). In smaller networks, like my home Wi-Fi, the routing table
+is often simple and static—just a default route to the ISP. In larger networks, routers use routing protocols (e.g., OSPF, BGP, RIP) to exchange
+information with other routers and dynamically update their tables. This ensures they always know the best path to a destination, even if network
+conditions change (like a link going down).
+
+In summary, the router, as the network gateway, enables communication between networks by using its routing table to intelligently forward packets.
+The routing table is the brains of the operation, dictating which interface to use and where to send each packet next. Whether it’s a simple default
+route to my ISP or a complex table in a corporate network, routing ensures that data gets where it needs to go, one hop at a time.
+
+There is a routing table on level 5.
+R1 has a fixed IP of 16.56.107.126 and a fixed mask of 255.255.255.128 and an IP-range of 16.56.107.1 - 16.56.107.125 for A1.
+
+Now to conquer the routing table of A it is as easy as setting the destination as default or 0.0.0.0/0 and the destination has to be the IP of the
+directly connected router R1, 80.103.79.126.
+
+Same concept applies to connecting B to the R2.
