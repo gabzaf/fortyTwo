@@ -1,0 +1,32 @@
+
+Communication protocols and devices are used to communicate with each other across the internet. This is called the TCP/IP model.
+TCP/IP stands for Transmission Control Protocol and Internet Protocol. TCP/IP is the standard model used for network communication.
+First, TCP, or Transmission Control Protocol, is an internet communication protocol that allows two devices to form a connection and stream data.
+The protocol includes a set of instructions to organize data, so it can be sent across a network. It also establishes a connection between two
+devices and makes sure that packets reach their appropriate destination.
+
+The IP in TCP/IP stands for Internet Protocol. IP has a set of standards used for routing and addressing data packets as they travel between devices
+on a network. Included in the Internet Protocol (IP) is the IP address that functions as an address for each private network.
+
+When data packets are sent and received across a network, they are assigned a port. Within the operating system of a network device, a port is a
+software-based location that organizes the sending and receiving of data between devices on a network. Ports divide network traffic into segments
+based on the service they will perform between two devices. The computers sending and receiving these data segments know how to prioritize and
+process these segments based on their port number.
+
+A router is a network device that connects multiple networks together. For example, if a computer in one network wants to send information to a
+tablet on another network, then the information will be transferred as follows: First, the information travels from the computer to the router. Then,
+the router reads the destination address, and forwards the data to the intended network's router. Finally, the receiving router directs that
+information to the tablet.
+
+Routers sit between networks and direct traffic, based on the IP address of the destination network. The IP address of the destination network is
+contained in the IP header. The router reads the header information and forwards the packet to the next router on the path to the destination. This
+continues until the packet reaches the destination network. Routers can also include a firewall feature that allows or blocks incoming traffic based
+on information in the transmission. This stops malicious traffic from entering the private network and damaging the local area network.
+
+This is my first time running into a router, since the router does not connect to anything else, there is no routing table that needs to be worked
+with.
+A has a fixed IP, so this will define the IP of my network.
+I can choose a fitting mask for the network, but the subnet has to have at least 3 usable IP-addresses, so choosing 255.255.255.240/28 will create
+a subnet of 14 usable addresses.
+The fixed IP of A is 63.174.115.132.
+This results in an available IP-range of 67.174.115.129 - 67.174.115.142.

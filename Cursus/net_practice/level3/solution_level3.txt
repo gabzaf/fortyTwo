@@ -3,7 +3,9 @@ A hub is a network device that broadcasts information to every device on the ne
 to any radio tuned to the correct frequency.
 Another network device is a switch. A switch makes connections between specific devices on a network by sending and receiving data between them.
 A switch is more intelligent than a hub. It only passes data to the intended destination. This makes switches more secure than hubs, and enables
-them to control the flow of traffic and improve network performance.
+them to control the flow of traffic and improve network performance. A switch forwards packets between devices directly connected to it. It maintains
+a MAC address table that matches MAC addresses of devices on the network to port numbers on the switch and forwards incoming data packets according
+to the destination MAC address.
 
 There is a Switch on level 3.
 Since we can't manipulate the mask of C, 255.255.255.128 or /25 will be the mask of the whole network.
