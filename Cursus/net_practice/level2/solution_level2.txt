@@ -1,0 +1,15 @@
+CIDR Notation - https://docs.netgate.com/pfsense/en/latest/network/cidr.html
+
+A system called Classless Inter-Domain Routing, or CIDR, was developed as an alternative to traditional subnetting. The idea is that you can add a
+specification in the IP address itself as to the number of significant bits that make up the routing or networking portion.
+For example, we could express the idea that the IP address 192.168.0.15 is associated with the netmask 255.255.255.0 by using the CIDR notation of
+192.168.0.15/24. This means that the first 24 bits of the IP address given are considered significant for the network routing.
+
+There are two separate networks, but this time I need to set the mask and IP correctly.
+For the network of A and B, they need the same mask, 255.255.255.224.
+The available IP-addresses for A1 are 192.168.57.193 - 192.168.57.221.
+
+Network C and D already have the same mask. So they just need addresses that are part of the same subnet.
+In the case of the mask being /30 the subnet only consists of 2 available addresses per subnet. So be careful, to choose the correct ones. to
+make things easier, I suggest you either start with the lowest or highest subnet.
+I choose the highest, so my available IP-range is 192.168.57.253 - 192.168.57.254

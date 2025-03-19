@@ -1,0 +1,20 @@
+
+A hub is a network device that broadcasts information to every device on the network. Think of a hub like a radio tower that broadcasts a signal
+to any radio tuned to the correct frequency.
+Another network device is a switch. A switch makes connections between specific devices on a network by sending and receiving data between them.
+A switch is more intelligent than a hub. It only passes data to the intended destination. This makes switches more secure than hubs, and enables
+them to control the flow of traffic and improve network performance.
+
+There is a Switch on level 3.
+Since we can't manipulate the mask of C, 255.255.255.128 or /25 will be the mask of the whole network.
+The subnet mask 255.255.255.128 (/25) means the network portion of the IP address uses 25 bits, leaving 7 bits for host addresses. This divides a
+standard Class C network (256 addresses with a /24 mask) into two subnets, each with 128 addresses (2^(32-25) = 2^7 = 128).
+- Subnet size: 128 IP addresses per subnet. First subnet: 104.198.245.0 to 104.198.245.127. Second subnet: 104.198.245.128 to 104.198.245.255.
+- Usable host addresses: 128 - 2 = 126 (subtracting the network [104.198.245.0] and broadcast addresses [104.198.245.127]).
+
+All three computers must be in the same subnet because they’re connected via a switch. Given the computer with IP 104.198.245.125 is in the
+104.198.245.0/25 subnet, the other two must also have IPs in the usable range of this subnet:
+104.198.245.1 to 104.198.245.126. The other two can use any two addresses from the remaining 125 usable addresses in that range
+(excluding 104.198.245.125).
+
+

@@ -1,3 +1,5 @@
+Devices need to find each other on a network to establish communications. These devices will use unique addresses or identifiers to locate each
+other. The addresses will ensure that communications happens with the right device. These are called the IP and MAC addresses.
 
 IP addresses allow network resources to be reached through a network interface. If one computer wants to communicate with another computer, it can
 address the information to the remote computer’s IP address. Assuming that the two computers are on the same network, or that the different
