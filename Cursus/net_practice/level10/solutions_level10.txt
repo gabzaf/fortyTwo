@@ -1,0 +1,25 @@
+
+There are two routers, one switch and internet in level 10.
+
+Internet has a routing table with fixed IP for it. If a set the destination with /24 (255.255.255.0). So I have 8 bits to IP addresses to other
+devices. The destination on Internet routing table is 154.184.123.0/24.
+Interface R12 which connects the Internet and the router R1. R12 has 163.172.2510.12 with 255.255.255.240 or /28.
+
+
+
+The easiest part will be the connection of H2 and H1 in their network.
+
+Now we are setting up the H41-R23 network and its connection to the Internet.
+
+The mask is fixed, so set it accordingly.
+The IP of R23 is fixed by the routing table of H4, so set it to the correct one.
+Now go along the route connecting it to the Internet, you will notice the mask of R21 is fixed so set the mask of R13 accordingly.
+The routing table of R1 already has the default set, as a connection to the internet.
+So now the package should be able to reach the Internet and only thing to fix is the routing table of the Internet.
+For this to be correct we only need to change the CIDR of the destination, so it is able to communicate with all 158.103.36.x addresses.
+This is done by changing the CIDR to /24, so it can reach 158.103.36.0 - 158.103.36.255.
+
+The hardest part of this level will now be the setup of the R22-H31 network and the correct setup of the routing table of R1.
+First, set the mask of R22 and H31 to 255.255.255.252 since we only need 2 usable IP-addresses and this creates the least problems with overlapping ip-ranges.
+Second, you need an IP-range that is still free. For this, we will take a look at all of the other networks.
+
