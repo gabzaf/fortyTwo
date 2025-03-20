@@ -1,0 +1,31 @@
+
+In this Level, private addresses appear. These addresses are commonly used for local area networks (LANs) in residential, office and enterprise
+environments.
+Most Internet service providers (ISPs) allocate only a single publicly routable IPv4 address to each residential customer, but many homes have more
+than one computer, smartphone, or other Internet-connected device. In this situation, a network address translator (NAT/PAT) gateway is usually
+used to provide Internet connectivity to multiple hosts. 
+Three non-overlapping ranges of IPv4 addresses for private networks are reserved:
+
+IP address range		Number of addresses	Largest CIDR block (subnet mask)
+10.0.0.0 – 10.255.255.255	16777216		10.0.0.0/8 (255.0.0.0)		
+172.16.0.0 – 172.31.255.255	1048576			172.16.0.0/12 (255.240.0.0)	
+192.168.0.0 – 192.168.255.255	65536			192.168.0.0/16 (255.255.0.0)	
+
+There are two routers in Level 9 and the routers are not doing any IP-translation when a computer reaches out to the internet.
+
+First I set the mask of R22 and C1 to 255.255.255.252, since I only have to assign two IP addresses. It's important to note that these two IP
+addresses that I have to assign, they are assigned within a private IP address range. So, I'll change them to a public IP address within the range
+defined by the mask, in this case 255.255.255.252 or /30 which gives me 4 available IP addresses and 2 usable IP addresses. Now set the next hop in
+the routing table of C to the IP of R22.
+
+The mask of R11 is fixed, so set the same for B1 and A1. This network can not use private IP-addresses, so I'll change them. Set the routing tables
+of A and B so they can reach R11. Set the network address combined with the mask as a destination in the routing table of the internet.
+
+As I can see in the routing table of D, the next hop is fixed, so put the same IP into R23. The destination can be set to default. Since the mask of
+that network is fixed as well, set it accordingly.
+
+Set the routing table of R1. For this I need the network-address of the R23-D1 network. With this I will be able to find out that the mask /18
+divides my IP-range into 4 subnets
+
+R23 has a fixed IP so the network address has the last two octets are termined whith 64.0, combine this with my mask of /18 and I have the
+missing destination of my routing table, ...64.0/18.
