@@ -56,9 +56,19 @@ The routing table is the brains of the operation, dictating which interface to u
 route to my ISP or a complex table in a corporate network, routing ensures that data gets where it needs to go, one hop at a time.
 
 There is a routing table on level 5.
-R1 has a fixed IP of 16.56.107.126 and a fixed mask of 255.255.255.128 and an IP-range of 16.56.107.1 - 16.56.107.125 for A1.
+R1 has a fixed IP of 16.56.107.126 and a fixed mask of 255.255.255.128 so an IP-range of 16.56.107.1 - 16.56.107.125 for A1.
+With a /17 mask, the subnet is incremented in blocks of 128 in the fourth octet, 256 -128 = 128. 
 
 Now to conquer the routing table of A it is as easy as setting the destination as default or 0.0.0.0/0 and the destination has to be the IP of the
 directly connected router R1, 80.103.79.126.
 
-Same concept applies to connecting B to the R2.
+R2 has a fixed IP of 132.68.2.254 and a mask of 255.255.192.0, with a /18 mask, the subnet is incremented in blocks of 64 in the third octet,
+256 - 192 = 64. So the network address is 132.68.0.0.
+
+The network portion is 18 bits and the host portion is 14 bits.
+The network: 10000100.01000100.00 (132.68.0)
+The host:      111111.11111111    (63.255)
+
+Junto os dois binarios: 10000100.01000100.00111111.11111111 = 132.68.63.255. So the full range of host addresses in the subnet is
+132.68.0.1 - 132.68.63.254
+

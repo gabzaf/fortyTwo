@@ -1,0 +1,29 @@
+I'll need to be aware of overlapping networks on Level 8.
+
+The first thing I'll solve is the connection between R13 and R21. The routing table of R2 gives me the fixed IP of R13 as 151.245.210.62 and as
+this network only consists of 2 needed IP-addresses I can set the mask of R13 and R21 to 255.255.255.252 in order to make things easier with
+overlapping IP-addresses, but I could choose a mask that provides more IP addresses. Then this will result in 151.245.210.61 as the address of R21.
+
+In R12 there is a fixed IP, which is 163.58.250.12, so this needs to be put into the routing table of the Internet.
+
+Now to set up the connection of D1 and R23. First, set the mask of R23 to equal to the mask of D1, since the mask of D1 is fixed to 255.255.255.240.
+Then put in 2 IP-addresses which are part of the same network into R23 and D1, I decided to use the lowest subnet of the mask, since it is a not
+used IP-range yet, which is 7.9.10.1 - 7.9.10.14. So IP of R23 will be 7.9.10.10 and of D1 will be 7.9.10.11.
+
+For the network between R22 and C1 we are free to choose any mask we want. In order to make it as easy as possible I set it to 255.255.255.252 or
+/30, because I only need 2 usable IP-addresses. After that I then choose a free range for my IP's. In this case I did choose the next free one
+after the network of R23 and D1, which will be 141.195.172.17 - 141.195.172.18.
+
+Last thing to do is to set all the routing tables accordingly.
+For C and D it's easy, both use default or 0.0.0.0/0 as a destination and the IP of the Interface of R2 they are directly connected to as next hop.
+
+For the routing table of R1 it is a little harder.
+Even though it would, for Net_Practice, work to just set the destination to default and get away with it just working, there is no way this should
+work as easily as this.
+Because that would result in the routing table having 2 default destinations which lead to a different next hop, which if you think about doesn't
+make any sense, because the router would have no way of knowing which default to use.
+
+To make it more sensible, the destination needs to be set to a value that leads to R2 and can go either way, to D1 and to C1.
+Because we used the lowest two IP-ranges for the two target networks, that need to be reached, the destination will be 141.195.172.0/27 the IP
+adress is of the network, that we want to reach and the CIDR will just define that the first 27 bits of the IP have to be 141.195.172, so it will
+be able to communicate with IP's ranging from 141.195.172.0 to 141.195.172.255.
