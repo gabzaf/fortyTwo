@@ -1,0 +1,14 @@
+
+Level 7 presents three subnets, I just need to make sure that no network overlap with each other.
+
+Interface R11 IP is fixed. Interface R12 IP is fixed.
+
+The first goal will be to find an appropriate mask to use. Since I need 3 different subnets, by looking at the table I will be able to decide which
+mask will be required. I have to choose a mask that makes 3 subnets at least.
+
+So, the minimum value of mask that I can use is 255.255.255.192 or /26 which creates 4 subnets with 64 available IP addresses. The maximum value of
+mask that I can use is 255.255.255.252 or in CIDR /30 because it provides 64 subnets, each having 2 usable IP-addresses.
+
+Now I just need to fill the routing table:
+
+Host C has to point to interface R22 IP address. Router R2 has to point to interface R12 IP address. And so on...
