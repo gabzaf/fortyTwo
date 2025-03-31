@@ -14,7 +14,7 @@ This repository is divided into different sections, each representing a key phas
 
 📌 Cursus (Core Projects)
 
-These are the core projects of the 42 curriculum that helped me develop a strong foundation in C programming, algorithmic thinking, systems programming, problem-solving, code reviews/communication, and code collaboration:
+These are the core projects of the 42 curriculum that helped me develop a strong foundation in C programming, algorithmic thinking, systems programming, problem-solving, code reviews and code collaboration:
 
 -> libft – Custom implementation of a standard C library.
 
