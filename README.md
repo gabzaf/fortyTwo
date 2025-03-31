@@ -16,19 +16,19 @@ This repository is divided into different sections, each representing a key phas
 
 These are the core projects of the 42 curriculum that helped me develop a strong foundation in C programming, algorithmic thinking, systems programming, problem-solving, code reviews/communication, and code collaboration:
 
-libft – Custom implementation of a standard C library.
+-> libft – Custom implementation of a standard C library.
 
-ft_printf – Recreating the C printf function.
+-> ft_printf – Recreating the C printf function.
 
-get_next_line – Handling file reading with dynamic memory management.
+-> get_next_line – Handling file reading with dynamic memory management.
 
-fdf – A 3D wireframe visualization project.
+-> fdf – A 3D wireframe visualization project.
 
-push_swap – Algorithmic sorting problem focused on stack operations.
+-> push_swap – Algorithmic sorting problem focused on stack operations.
 
-minitalk – Inter-process communication using UNIX signals.
+-> minitalk – Inter-process communication using UNIX signals.
 
-net_practice – Network simulation exercises for understanding IP routing and subnetting.
+-> net_practice – Network simulation exercises for understanding IP routing and subnetting.
 
 🎓 Exams
 
@@ -38,23 +38,23 @@ At 42 Porto, exams are a fundamental part of evaluating our problem-solving skil
 
 The Piscine is an intensive one-month coding bootcamp that serves as an introduction to 42’s learning methodology. It includes daily exercises and projects focused on:
 
-C programming fundamentals
+- C programming fundamentals
 
-Problem-solving techniques
+- Problem-solving techniques
 
-Shell scripting & UNIX commands
+- Shell scripting & UNIX commands
 
-Collaborative coding
+- Collaborative coding
 
 🏆 Hackathon
 
 I participated in the Hackathon Sogrape, a challenge-based event designed to simulate real-world industry scenarios. One of the key challenges involved:
 
-Web Scraping & Data Collection
+- Web Scraping & Data Collection
 
-User Interaction with Displayed Data
+- User Interaction with Displayed Data
 
-This experience reinforced my ability to work under pressure, think critically, and develop efficient solutions in a team environment.
+For this hackathon, I used Python to implement efficient data collection and processing solutions. This experience reinforced my ability to work under pressure, think critically and develop efficient solutions in a team environment.
 
 # 🌟 Get in Touch
 
