@@ -6,10 +6,7 @@ Welcome to ft_printf, a project that challenges to create my version of the prin
 The printf function in C is a powerful tool for formatting and printing output to the console. 
 The goal of the ft_printf project is to implement my own version of this function, capable of handling various format specifiers, flags and conversion specifiers.
 
-## 2. Getting Started
-To get started with ft_printf, clone this repository to your local machine.
-
-## 3. Function Description
+## 2. Function Description
 The ft_printf function has the following prototype:
 
 `int ft_printf(const char *format, ...)`
