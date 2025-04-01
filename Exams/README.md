@@ -1,6 +1,6 @@
 # 42 Exams Repository
 
-This repository contains exam solutions from [42 School](https://www.42.fr/), organized by difficulty rank. The exercises test the understanding of programming fundamentals, algorithms and system concepts in C.
+This repository contains exam solutions from 42 Porto, organized by difficulty rank. The exercises test the understanding of programming fundamentals, algorithms and system concepts in C.
 
 ## 📂 Directory Structure
 
