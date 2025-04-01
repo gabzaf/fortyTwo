@@ -3,14 +3,12 @@
 This repository contains exam solutions from [42 School](https://www.42.fr/), organized by difficulty rank. The exercises test the understanding of programming fundamentals, algorithms and system concepts in C.
 
 ## 📂 Directory Structure
-Exams/
-├── rank02/ # Basic exercises (C fundamentals)
 
-├── rank03/ # Intermediate exercises
+rank02/ # Basic exercises (C fundamentals)
 
-├── rank04/ # Advanced challenges
+rank03/ # Intermediate exercises
 
-└── ... 
+rank04/ # Advanced challenges
 
 ## 🏆 Exercises by Rank
 
