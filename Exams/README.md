@@ -4,11 +4,11 @@ This repository contains exam solutions from 42 Porto, organized by difficulty r
 
 ## 📂 Directory Structure
 
-rank02/ # Basic exercises (C fundamentals)
+rank_02 # Basic exercises (C fundamentals)
 
-rank03/ # Intermediate exercises
+rank_03 # Intermediate exercises
 
-rank04/ # Advanced challenges
+rank_04 # Advanced challenges
 
 ## 🏆 Exercises by Rank
 
