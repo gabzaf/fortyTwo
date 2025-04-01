@@ -20,23 +20,23 @@ NetPractice is a networking project designed to help understand and apply fundam
 
 ## Installation & Setup
 
-Download the provided project file from the 42 Intranet.
+- Download the provided project file from the 42 Intranet.
 
-Extract the files to a preferred directory.
+- Extract the files to a preferred directory.
 
-Open index.html in a web browser to start the simulation.
+- Open index.html in a web browser to start the simulation.
 
 ## Learning Outcomes
 
-Understanding IP addressing and subnetting.
+- Understanding IP addressing and subnetting.
 
-Configuring network routes and gateways.
+- Configuring network routes and gateways.
 
-Debugging network connectivity issues.
+- Debugging network connectivity issues.
 
-Understanding and implementing routing tables.
+- Understanding and implementing routing tables.
 
-Applying practical networking concepts in a simulated environment.
+- Applying practical networking concepts in a simulated environment.
 
 ### License
 
