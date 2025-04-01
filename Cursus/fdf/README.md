@@ -22,7 +22,7 @@ FDF is a 3D wireframe modeling project that renders landscapes from .fdf files u
 
 ### ▶️ Execution
 
-`$ ./fdf maps/42.fdf`
+`$ ./fdf test_maps/42.fdf`
 
 #### 📚 Resources
 
@@ -35,10 +35,6 @@ FDF is a 3D wireframe modeling project that renders landscapes from .fdf files u
 - Event Hooks: Non-blocking keyboard/mouse input handling.
 
 - Memory Management: No leaks (verified with valgrind).
-
-## 🎨 Example Output
-
-$ ./fdf maps/42.fdf
 
 📜 Notes
 
