@@ -16,51 +16,39 @@ FDF is a 3D wireframe modeling project that renders landscapes from .fdf files u
 
 ### 🛠️ Features
 
-🔹 Mandatory
+- Isometric Projection: Transforms 3D coordinates (x, y, z) into a 2D view.
 
-✅ Isometric Projection: Transforms 3D coordinates (x, y, z) into a 2D view.
+- Map Parsing: Reads .fdf files where numbers represent altitudes (e.g., 42.fdf).
 
-✅ Map Parsing: Reads .fdf files where numbers represent altitudes (e.g., 42.fdf).
-
-✅ Interactive Window:
-
-Close with ESC key or window button.
-
-Smooth window management (minimize/resize support).
+- Interactive Window: Close with ESC key or window button.
 
 ## 🚀 Usage
 
 ### 🏗️ Compilation
 
-make        # Builds the executable `fdf`
-make clean  # Cleans object files
+$ make        # Builds the executable `fdf`
+$ make clean  # Cleans object files
 
 ### ▶️ Execution
 
-./fdf maps/42.fdf
+$ ./fdf maps/42.fdf
 
 #### 📚 Resources
 
-📖 MiniLibX Docs: MiniLibX Documentation📜 FDF Subject: en.subject.pdf📂 Sample Maps: Download fdf.zip from the 42 intranet.
+📖 MiniLibX Docs: MiniLibX Documentation
 
 # 🧠 Technical Highlights
 
-Bresenham’s Algorithm: Efficient line-drawing between 3D points.
+- Bresenham’s Algorithm: Efficient line-drawing between 3D points.
 
-Matrix Transformations: Converts 3D coordinates into 2D screen space.
+- Event Hooks: Non-blocking keyboard/mouse input handling.
 
-Event Hooks: Non-blocking keyboard/mouse input handling.
-
-Memory Management: No leaks (verified with valgrind).
+- Memory Management: No leaks (verified with valgrind).
 
 ## 🎨 Example Output
 
-$> ./fdf maps/42.fdf
-
-Rendered 42The iconic "42" in wireframe format.
+$ ./fdf maps/42.fdf
 
 📜 Notes
 
-📌 Libft functions were used for parsing. Get Next Line were used to read the data from a file.
-
-🚀 Explore the code to see how 3D landscapes come to life!
+- Libft functions were used for parsing. Get Next Line was used to read the data from a file.
