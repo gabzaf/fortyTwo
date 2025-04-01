@@ -14,24 +14,15 @@ FDF is a 3D wireframe modeling project that renders landscapes from .fdf files u
 
 - Graphics programming with MiniLibX (handling windows, events, and pixel rendering).
 
-### 🛠️ Features
-
-- Isometric Projection: Transforms 3D coordinates (x, y, z) into a 2D view.
-
-- Map Parsing: Reads .fdf files where numbers represent altitudes (e.g., 42.fdf).
-
-- Interactive Window: Close with ESC key or window button.
-
 ## 🚀 Usage
 
 ### 🏗️ Compilation
 
-$ make        # Builds the executable `fdf`
-$ make clean  # Cleans object files
+`$ make`        # Builds the executable fdf
 
 ### ▶️ Execution
 
-$ ./fdf maps/42.fdf
+`$ ./fdf maps/42.fdf`
 
 #### 📚 Resources
 
