@@ -18,6 +18,8 @@ These are the core projects of the 42 curriculum that helped me develop a strong
 
 -> libft – Custom implementation of a standard C library.
 
+-> born2beroot - Set up a secure Debian/Rocky Linux server in a virtual machine with strict system administration rules.
+
 -> ft_printf – Recreating the C printf function.
 
 -> get_next_line – Handling file reading with dynamic memory management.
