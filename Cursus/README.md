@@ -16,7 +16,35 @@ This section contains the core projects of the 42 curriculum, designed to develo
 
 - Skills: Memory management, static libraries, defensive programming.
 
-### 2. ft_printf
+### 2. Born2beRoot
+
+- Goal: Set up a secure Debian/Rocky Linux server in a virtual machine with strict system administration rules.
+
+- Key Tasks:
+
+	- Install a minimal OS (Debian/Rocky) without a graphical interface.
+
+	- Configure LVM with 2+ encrypted partitions.
+
+	- Implement SSH on port 4242 (root login disabled).
+
+	- Set up UFW/firewalld (only port 4242 open).
+
+	- Enforce strong password policies (e.g., 10+ chars, expiry every 30 days).
+
+	- Configure sudo with logging, TTY mode, and restricted paths.
+
+	- Create a monitoring.sh script to display system stats every 10 minutes.
+
+- Skills Gained:
+
+	- Virtualization (VirtualBox/UTM), partitioning, user/group management.
+
+	- Security hardening (SELinux/AppArmor, firewall, sudo policies).
+
+	- Bash scripting, cron jobs and system monitoring.
+
+### 3. ft_printf
 
 - Goal: Recode the printf function, handling various conversions (c, s, p, d, i, u, x, X, %).
 
@@ -28,7 +56,7 @@ This section contains the core projects of the 42 curriculum, designed to develo
 
 - Skills: Parsing, bit manipulation, edge-case handling.
 
-### 3. get_next_line
+### 4. get_next_line
 
 - Goal: Read a file line by line using a static variable and dynamic memory allocation.
 
@@ -40,7 +68,7 @@ This section contains the core projects of the 42 curriculum, designed to develo
 
 - Skills: File I/O, buffer management, memory efficiency.
 
-### 4. push_swap
+### 5. push_swap
 
 - Goal: Sort a stack of integers using two stacks (a and b) with a limited set of operations (sa, pb, ra, etc.).
 
@@ -50,7 +78,7 @@ This section contains the core projects of the 42 curriculum, designed to develo
 
 - Skills: Algorithm design, complexity analysis, stack manipulation.
 
-### 5. minitalk
+### 6. minitalk
 
 - Goal: Implement client-server communication using UNIX signals (SIGUSR1, SIGUSR2).
 
@@ -62,7 +90,7 @@ This section contains the core projects of the 42 curriculum, designed to develo
 
 Skills: Signal handling, bitwise operations, process synchronization.
 
-### 6. FDF
+### 7. FDF
 
 - Goal: Render 3D wireframe landscapes from .fdf files using MiniLibX.
 
@@ -74,7 +102,7 @@ Skills: Signal handling, bitwise operations, process synchronization.
 
 - Skills: Graphics programming, matrix transformations, event handling.
 
-### 7. NetPractice
+### 8. NetPractice
 
 - Goal: Configure and troubleshoot simulated network topologies (IP addressing, subnetting, routing).
 
