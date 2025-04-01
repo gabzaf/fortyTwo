@@ -24,11 +24,11 @@ FDF is a 3D wireframe modeling project that renders landscapes from .fdf files u
 
 `$ ./fdf test_maps/42.fdf`
 
-#### 📚 Resources
+### 📚 Resources
 
 📖 MiniLibX Docs: MiniLibX Documentation
 
-# 🧠 Technical Highlights
+## 🧠 Technical Highlights
 
 - Bresenham’s Algorithm: Efficient line-drawing between 3D points.
 
@@ -36,6 +36,6 @@ FDF is a 3D wireframe modeling project that renders landscapes from .fdf files u
 
 - Memory Management: No leaks (verified with valgrind).
 
-📜 Notes
+### 📜 Notes
 
 - Libft functions were used for parsing. Get Next Line was used to read the data from a file.
