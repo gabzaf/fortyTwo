@@ -25,10 +25,10 @@ Key Concepts:
 ## 🚀 Usage
 ### Compilation
 
-make        # Builds push_swap
+$ make        # Builds push_swap
 
 ### Sort numbers
-./push_swap 3 2 1 0
+$ ./push_swap 3 8 1 2 0
 
 # Validate with checker
-ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker $ARG
+$ ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker $ARG
