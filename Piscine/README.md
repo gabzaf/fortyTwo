@@ -32,4 +32,5 @@ The 42 Piscine is a 4-week intensive coding bootcamp that teaches:
 ## Usage
 Each directory contains its own set of files and exercises. To compile and run most C programs:
 `$ gcc -Wall -Wextra -Werror *.c -o program`
-./program
+
+`$ ./program`
