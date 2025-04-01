@@ -14,5 +14,5 @@ A 42 project to master system administration by deploying a secure Linux server 
 ## Installation  
 
 1. VM Setup: 
-   - Use [VirtualBox](https://www.virtualbox.org/) or UTM. 
-   - OS: Debian stable or Rocky Linux. 
+   - Use [VirtualBox](https://www.virtualbox.org/)
+   - OS: Debian stable or Rocky Linux
