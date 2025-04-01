@@ -8,7 +8,7 @@ rank_02 # Basic exercises (C fundamentals)
 
 rank_03 # Intermediate exercises
 
-rank_04 # Advanced challenges
+rank_04 # Advanced challenge
 
 ## 🏆 Exercises by Rank
 
