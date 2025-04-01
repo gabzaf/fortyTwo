@@ -5,8 +5,11 @@ This repository contains exam solutions from [42 School](https://www.42.fr/), or
 ## 📂 Directory Structure
 Exams/
 ├── rank02/ # Basic exercises (C fundamentals)
+
 ├── rank03/ # Intermediate exercises
+
 ├── rank04/ # Advanced challenges
+
 └── ... 
 
 ## 🏆 Exercises by Rank
