@@ -9,16 +9,12 @@ Key Concepts:
 - **Sorting algorithms** optimization
 - **Complexity analysis** (minimizing operation counts)
 
----
-
 ## 🎯 Objectives
 - Sort a stack of integers in ascending order (smallest at top)
 - Use only 11 allowed operations (e.g., `sa`, `pb`, `rrr`)
 - Achieve benchmark targets:
   - **≤ 700 ops** for 100 random numbers
   - **≤ 5500 ops** for 500 random numbers
-
----
 
 ## 🛠️ Features
 ### Core Program (`push_swap`)
@@ -31,7 +27,7 @@ Key Concepts:
 
 make        # Builds push_swap
 
-# Sort numbers
+### Sort numbers
 ./push_swap 3 2 1 0
 
 # Validate with checker
