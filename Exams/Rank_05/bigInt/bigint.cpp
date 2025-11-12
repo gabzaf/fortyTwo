@@ -69,7 +69,14 @@ std::string Bigint::addStrings(const std::string &a, const std::string &b) const
 Bigint Bigint::operator+(const bigint &other) const
 {
     Bigint res = *this;
-    res.digits = addStrings(_digits, other._digits);
+    res._digits = addStrings(_digits, other._digits);
     res.removeZeros();
     return (res);
+}
+
+Bigint Bigint::operator+=(const Bigint &other)
+{
+    _digits = addStrings(_digits, other._digits);
+    removeZeros();
+    return (*this);
 }
