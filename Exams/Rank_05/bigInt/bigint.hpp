@@ -16,7 +16,7 @@ class Bigint
         Bigint(unsigned int nbr);
         ~Bigint();
 
-        Bigint operator+(const bigint &other) const;
+        Bigint operator+(const Bigint &other) const;
         Bigint operator+=(const Bigint &other);
         
         bool operator==(const Bigint &other) const;
