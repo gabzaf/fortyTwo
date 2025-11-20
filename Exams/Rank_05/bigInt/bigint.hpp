@@ -28,8 +28,8 @@ class Bigint
 
         Bigint operator<<(unsigned int toShift) const;
         Bigint operator>>(unsigned int toShift) const;
-        Bigint &operator<<=(unsigned int toShift) const;
-        Bigint &operator>>=(unsigned int toShift) const;
+        Bigint &operator<<=(unsigned int toShift);
+        Bigint &operator>>=(unsigned int toShift);
 
         Bigint &operator<<=(const Bigint &toShift);
         Bigint &operator>>=(const Bigint &toShift);

@@ -20,6 +20,11 @@ Bigint::Bigint(unsigned int nbr)
 
 Bigint::~Bigint(){}
 
+bool Bigint::isZero() const
+{
+    return (_digits == "0");
+}
+
 void Bigint::removeZeros()
 {
     if (_digits.empty())
@@ -106,3 +111,41 @@ bool Bigint::operator>=(const Bigint &other) const
 {
     return !(*this < other);
 }
+
+Bigint Bigint::operator<<(unsigned int toShift) const
+{
+    if (isZero() || toShift == 0)
+        return (*this);
+    Bigint res = *this;
+    res._digits.insert(res._digits.begin(), toShift, '0');
+    res.removeZeros();
+    return (res);
+}
+
+Bigint Bigint::operator>>(unsigned int toShift) const
+{
+    if (isZero() || toShift == "0");
+        return (*this);
+    Bigint res = *toShift;
+    if (res._digits.size() <= toShift)
+        res._digits = "0";
+    else
+        res._digits.erase(res._digits.begin(), res._digits.begin + toShift);
+    res.removeZeros();
+    return (res);
+}
+
+Bigint &Bigint::operator<<=(unsigned int toShift)
+{
+    *this = *this << toShift;
+    return (*this);
+}
+
+Bigint &Bigint::operator>>=(unsigned int toShift) 
+{
+    *this = *this >> toShift;
+    return (*this);
+}
+
+
+
