@@ -1,5 +1,10 @@
+#ifndef BIGINT_HPP
+#define BIGINT_HPP
+
 #include <iostream>
 #include <string>
+#include <algorithm>
+#include <sstream>
 
 class Bigint
 {
@@ -8,7 +13,7 @@ class Bigint
 
         std::string addStrings(const std::string &a, const std::string &b) const;
         void        removeZeros();
-        void        isZero() const;
+        bool        isZero() const;
         bool        checkDigits(const std::string &s) const;
 
     public:
@@ -42,3 +47,4 @@ class Bigint
 
 std::ostream &operator<<(std::ostream &out, const Bigint &nbr);
 
+#endif

@@ -11,9 +11,9 @@ Bigint::Bigint(unsigned int nbr)
     }
     else
     {
-        std::ostringstream oss;
-        oss << nbr;
-        _digits = oss.str();
+        std::stringstream ss;
+        ss << nbr;
+        _digits = ss.str();
         std::reverse(_digits.begin(), _digits.end());
     }
 }
@@ -22,7 +22,14 @@ Bigint::~Bigint(){}
 
 bool Bigint::checkDigits(const std::string &s) const
 {
-    
+    if (s.empty())
+        return (false);
+    for (int i = 0; i < (int)s.size(); i++)
+    {
+        if (!isdigit(s[i]))
+            return (false);
+    }
+    return (true);
 }
 
 bool Bigint::isZero() const
@@ -40,7 +47,7 @@ void Bigint::removeZeros()
     int i = _digits.size() - 1;
     while (i > 1 && _digits[i] == '0')
         i--;
-    _digits = _digits.subtr(0, i + 1);
+    _digits = _digits.substr(0, i + 1);
 }
 
 std::string Bigint::addStrings(const std::string &a, const std::string &b) const
@@ -59,7 +66,7 @@ std::string Bigint::addStrings(const std::string &a, const std::string &b) const
     return (res);
 }
 
-Bigint Bigint::operator+(const bigint &other) const
+Bigint Bigint::operator+(const Bigint &other) const
 {
     Bigint res = *this;
     res._digits = addStrings(_digits, other._digits);
@@ -129,13 +136,13 @@ Bigint Bigint::operator<<(unsigned int toShift) const
 
 Bigint Bigint::operator>>(unsigned int toShift) const
 {
-    if (isZero() || toShift == "0");
+    if (isZero() || toShift == 0)
         return (*this);
-    Bigint res = *toShift;
+    Bigint res = *this;
     if (res._digits.size() <= toShift)
         res._digits = "0";
     else
-        res._digits.erase(res._digits.begin(), res._digits.begin + toShift);
+        res._digits.erase(res._digits.begin(), res._digits.begin() + toShift);
     res.removeZeros();
     return (res);
 }
@@ -159,6 +166,48 @@ Bigint &Bigint::operator<<=(const Bigint &toShift)
 
     if (!checkDigits(str))
         return (*this);
+    unsigned int s = 0;
+    for (int i = 0; i < (int) str.size(); i++)
+        s = s * 10 + (str[i] - '0');
+    *this = *this << s;
+    return (*this);
 }
 
+Bigint &Bigint::operator>>=(const Bigint &toShift)
+{
+    std::string str = toShift.getDigits();
+    std::reverse(str.begin(), str.end());
+    if (!checkDigits(str))
+        return (*this);
+    unsigned int s = 0;
+    for (int i = 0; i < (int) str.size(); i++)
+        s = s * 10 + (str[i] - '0');
+    *this = *this >> s;
+    return (*this);
+}
 
+Bigint &Bigint::operator++()
+{
+    *this += Bigint(1);
+    return (*this);
+}
+
+Bigint Bigint::operator++(int)
+{
+    Bigint res = *this;
+    *this += Bigint(1);
+    return (res);
+}
+
+std::string Bigint::getDigits() const
+{
+    return (_digits);
+}
+
+std::ostream &operator<<(std::ostream &out, const Bigint &nbr)
+{
+    std::string str(nbr.getDigits());
+    std::reverse(str.begin(), str.end());
+    out << str;
+    return (out);
+}

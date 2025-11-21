@@ -1,10 +1,11 @@
 #include "bigint.hpp"
 #include <iostream>
+#include <string>
 
 int main()
 {
-    const bigint a(42);
-    bigint b(21), c, d(1337), e(d);
+    const Bigint a(42);
+    Bigint b(21), c, d(1337), e(d);
 
     std::cout << "a = " << a << std::endl;
     std::cout << "b = " << b << std::endl;
@@ -21,7 +22,7 @@ int main()
 
     std::cout << "(b << 10) + 42 = " << ((b << 10) + 42) << std::endl;
     std::cout << "(d <<= 4) = " << (d <<= 4) << std::endl;
-    std::cout << "(d >>= 2) = " << (d >>= (const bigint)2) << std::endl;
+    std::cout << "(d >>= 2) = " << (d >>= (const Bigint)2) << std::endl;
 
     std::cout << "a =" << a << std::endl;
     std::cout << "d =" << d << std::endl;
