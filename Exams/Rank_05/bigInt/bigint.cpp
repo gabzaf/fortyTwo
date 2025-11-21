@@ -20,6 +20,11 @@ Bigint::Bigint(unsigned int nbr)
 
 Bigint::~Bigint(){}
 
+bool Bigint::checkDigits(const std::string &s) const
+{
+    
+}
+
 bool Bigint::isZero() const
 {
     return (_digits == "0");
@@ -62,7 +67,7 @@ Bigint Bigint::operator+(const bigint &other) const
     return (res);
 }
 
-Bigint Bigint::operator+=(const Bigint &other)
+Bigint &Bigint::operator+=(const Bigint &other)
 {
     _digits = addStrings(_digits, other._digits);
     removeZeros();
@@ -147,5 +152,13 @@ Bigint &Bigint::operator>>=(unsigned int toShift)
     return (*this);
 }
 
+Bigint &Bigint::operator<<=(const Bigint &toShift)
+{
+    std::string str = toShift.getDigits();
+    std::reverse(str.begin(), str.end());
+
+    if (!checkDigits(str))
+        return (*this);
+}
 
 

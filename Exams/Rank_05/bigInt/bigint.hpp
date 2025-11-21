@@ -17,7 +17,7 @@ class Bigint
         ~Bigint();
 
         Bigint operator+(const Bigint &other) const;
-        Bigint operator+=(const Bigint &other);
+        Bigint &operator+=(const Bigint &other);
         
         bool operator==(const Bigint &other) const;
         bool operator!=(const Bigint &other) const;
