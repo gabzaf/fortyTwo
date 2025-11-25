@@ -18,6 +18,18 @@ Bigint::Bigint(unsigned int nbr)
     }
 }
 
+bigint::bigint(const std::string& nbr)
+{
+    if(!checkDigits(nbr))
+        _digits = "0";
+    else
+    {
+        _digits = nbr;
+        std::reverse(_digits.begin(), _digits.end());
+        removeZeros();
+    }
+}
+
 Bigint::~Bigint(){}
 
 bool Bigint::checkDigits(const std::string &s) const

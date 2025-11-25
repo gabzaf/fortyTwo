@@ -19,6 +19,7 @@ class Bigint
     public:
         Bigint();
         Bigint(unsigned int nbr);
+        Bigint(const std::string& nbr);
         ~Bigint();
 
         Bigint operator+(const Bigint &other) const;
