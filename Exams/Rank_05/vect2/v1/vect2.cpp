@@ -12,7 +12,7 @@ vect2::vect2(const vect2 &other)
 	_data[1] = other._data[1];
 }
 
-vect2	&vect2::operator=(const vect2 &other)
+vect2		&vect2::operator=(const vect2 &other)
 {
 	if (this != &other)
 	{
@@ -22,7 +22,7 @@ vect2	&vect2::operator=(const vect2 &other)
 	return (*this);
 }
 
-int	&vect2::operator[](int index)
+int		&vect2::operator[](int index)
 {
 	return (_data[index]);
 }
@@ -57,21 +57,21 @@ vect2		vect2::operator-()
 	return (vect2(-_data[0], -_data[1]));
 }
 
-vect2		vect2::operator+=(const vect2 &other)
+vect2		&vect2::operator+=(const vect2 &other)
 {
 	_data[0] += other._data[0];
 	_data[1] += other._data[1];
 	return (*this);
 }
 
-vect2		vect2::operator-=(const vect2 &other)
+vect2		&vect2::operator-=(const vect2 &other)
 {
 	_data[0] -= other._data[0];
 	_data[1] -= other._data[1];
 	return (*this);
 }
 
-vect2		vect2::operator*=(int carry)
+vect2		&vect2::operator*=(int carry)
 {
 	_data[0] *= carry;
 	_data[1] *= carry;
@@ -81,7 +81,6 @@ vect2		vect2::operator*=(int carry)
 vect2		vect2::operator++(int)
 {
 	vect2 res = *this;
-
 	++(_data[0]);
 	++(_data[1]);
 	return (res);
@@ -97,7 +96,6 @@ vect2		&vect2::operator++()
 vect2		vect2::operator--(int)
 {
 	vect2 res = *this;
-
 	--(_data[0]);
 	--(_data[1]);
 	return (res);
@@ -105,8 +103,8 @@ vect2		vect2::operator--(int)
 
 vect2		&vect2::operator--()
 {
-	--(_data[0]);
-	--(_data[1]);
+	++(_data[0]);
+	++(_data[1]);
 	return (*this);
 }
 
@@ -123,10 +121,10 @@ bool		vect2::operator!=(const vect2 &other) const
 std::ostream	&operator<<(std::ostream &out, const vect2 &v)
 {
 	out << "{" << v[0] << ", " << v[1] << "}";
-	return (out);
+	return (out);	
 }
 
 vect2		operator*(int carry, const vect2 &v)
 {
-	return (vect2(carry * v[0], carry * v[1]));
+	return vect2(carry * v[0], carry * v[1]);
 }
