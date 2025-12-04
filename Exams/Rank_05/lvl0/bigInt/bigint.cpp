@@ -18,7 +18,7 @@ Bigint::Bigint(unsigned int nbr)
     }
 }
 
-bigint::bigint(const std::string& nbr)
+Bigint::Bigint(const std::string& nbr)
 {
     if(!checkDigits(nbr))
         _digits = "0";
