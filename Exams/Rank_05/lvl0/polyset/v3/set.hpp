@@ -6,15 +6,15 @@
 class set
 {
 	private:
-		searchable_bag &bag;
+		searchable_bag	&bag;
 	public:
-		set(searchable_bag &_bag);
+		set(searchable_bag &bag);
 		set(const set &other);
 		set &operator=(const set &other);
 		~set();
 
 		void insert(int value);
-		void insert(int *array, int size);
+		void insert(int *arr, int size);
 		void print() const;
 		void clear();
 

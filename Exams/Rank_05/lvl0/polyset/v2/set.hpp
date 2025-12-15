@@ -8,12 +8,12 @@ class set
 	private:
 		searchable_bag &bag;
 	public:
-		set(searchable_bag &_bag);
+		set(const searchable_bag &bag);
 		set(const set &other);
 		set &operator=(const set &other);
 		~set();
 
-		void insert(int value);
+		void insert(int item);
 		void insert(int *array, int size);
 		void print() const;
 		void clear();
