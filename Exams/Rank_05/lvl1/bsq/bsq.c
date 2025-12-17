@@ -12,7 +12,7 @@ typedef struct s_bsq
 	char	**map;
 } t_bsq;
 
-#define ERROR "ERROR: map error \n"
+#define ERROR "ERROR: invalid map \n"
 
 void	free_map(t_bsq *bsq, int i)
 {
