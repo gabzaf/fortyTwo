@@ -6,12 +6,57 @@
 #include <sys/select.h>
 #include <netinet/in.h>
 
-int	fd_max = 0;
+int	fd_max = 0, clients = 0;
 fd_set	fds, rfds, wfds;
+int	id[10000];
+char	*msg[10000];
+char	wbuf[42], rbuf[1024];
+
+int	extract_message(char **buf, char **msg)
+{
+	char	*newbuf;
+	int	i;
+
+	*msg = 0;
+	if (*buf == 0)
+		return (0);
+	i = 0;
+	while ((*buf)[i])
+	{
+		if ((*buf)[i] == '\n')
+		{
+			newbuf = (char *)calloc(1, sizeof(*newbuf)*(strlen(*buf + i + 1) + 1));
+			if (newbuf == 0)
+				return (-1);
+			strcpy(newbuf, *buf + i + 1);
+			*msg = *buf;
+			(*msg)[i + 1] = 0;
+			*buf = newbuf;
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
 
 char	*str_join(char *buf, char *add)
 {
+	char	*newbuf;
+	int	len;
 
+	if (buf == 0)
+		len = 0;
+	else
+		len = strlen(buf);
+	newbuf = (char *)malloc(sizeof(*newbuf) * (len + strlen(add) + 1));
+	if (newbuf == 0)
+		return (0);
+	newbuf[0] = 0;
+	if (buf != 0)
+		strcat(newbuf, buf);
+	free(buf);
+	strcat(newbuf, add);
+	return (newbuf);
 }
 
 void	exit_err(char *err)
@@ -20,19 +65,46 @@ void	exit_err(char *err)
 	exit(1);
 }
 
-void	add_client()
+void	notify(int from, char *msg)
 {
+	for (int fd = 0; fd <= fd_max; fd++)
+	{
+		if (FD_ISSET(fd, &wfds) && fd != from)
+			send(fd, msg, strlen(wbuf), 0);
+	}
+}
 
+void	add_client(int fd)
+{
+	fd_max = fd > fd_max ? fd : fd_max;
+	FD_SET(fd, &fds);
+	id[fd] = clients++;
+	msg[fd] = NULL;
+	sprintf(wbuf, "server: client %d just arrived\n", id[fd]);
+	notify(fd, wbuf);
 }
 
 void	remove_client(int fd)
 {
-
+	sprintf(wbuf, "server: client %d disconnected\n", id[fd]);
+	notify(fd, wbuf);
+	free(msg[fd]);
+	msg[fd] = NULL;
+	FD_CLR(fd, &fds);
+	close(fd);
 }
 
 void	serve(int fd)
 {
-
+	char	*str;
+	while (extract_message(&msg[fd], &str))
+	{
+		sprintf(wbuf, "client %d:", id[fd]);
+		notify(fd, wbuf);
+		notify(fd, str);
+		free(str);
+		str = NULL;
+	}
 }
 
 int	main(int ac, char **av)
@@ -42,9 +114,9 @@ int	main(int ac, char **av)
 	//This macro removes all fds from set. It should be employed as the 1st step in initializing a fd set.
 	FD_ZERO(&fds);
 	//Creates TCP socket sing IPv4
-	int	socketfd = socket(AFINET, SOCK_STREAM, 0);
+	int	socketfd = socket(AF_INET, SOCK_STREAM, 0);
 	if (socketfd < 0)
-		exit_error("Fatal error\n");
+		exit_err("Fatal error\n");
 	//Initialize fd_max with the server socket fd, used by select
 	fd_max = socketfd;
 	//This macro adds the socket fd to set.
@@ -60,10 +132,10 @@ int	main(int ac, char **av)
 	//Sets the port number from the cli arg, converting to network byte order
 	addr.sin_port = htons(atoi(av[1]));
 	//Binds the socket to the given IP/port and starts listening with a backlog of 10
-	if (bind(sockfd, (struct sockaddr *)&addr, sizeof(addr)) || listen(sockfd, 10))
+	if (bind(socketfd, (struct sockaddr *)&addr, sizeof(addr)) || listen(socketfd, 10))
 		exit_err("Fatal error\n");
 	//Starts the event-driven infinite loop
-	while (true)
+	while (1)
 	{
 		//Copies the master fd set into read and write sets for select
 		rfds = wfds = fds;
