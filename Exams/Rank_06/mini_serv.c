@@ -12,6 +12,7 @@ int	id[10000];
 char	*msg[10000];
 char	wbuf[42], rbuf[1024];
 
+//Attempts to extract one full message from a buffer
 int	extract_message(char **buf, char **msg)
 {
 	char	*newbuf;
@@ -65,10 +66,12 @@ void	exit_err(char *err)
 	exit(1);
 }
 
+//Sends a message to all connected clients excepts the sender
 void	notify(int from, char *msg)
 {
 	for (int fd = 0; fd <= fd_max; fd++)
 	{
+		//Checks if the fd is writable and not the sender
 		if (FD_ISSET(fd, &wfds) && fd != from)
 			send(fd, msg, strlen(wbuf), 0);
 	}
@@ -86,10 +89,11 @@ void	add_client(int fd)
 
 void	remove_client(int fd)
 {
-	sprintf(wbuf, "server: client %d disconnected\n", id[fd]);
+	sprintf(wbuf, "server: client %d just left\n", id[fd]);
 	notify(fd, wbuf);
 	free(msg[fd]);
 	msg[fd] = NULL;
+	//Removes fd from the master set
 	FD_CLR(fd, &fds);
 	close(fd);
 }
