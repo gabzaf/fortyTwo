@@ -60,7 +60,9 @@ char	*str_join(char *buf, char *add)
 		return (0);
 	newbuf[0] = 0;
 	if (buf != 0)
-		strcat(newbuf, add);
+		strcat(newbuf, buf);
+	free(buf);
+	strcat(newbuf, add);
 	return (newbuf);
 }
 
@@ -74,7 +76,7 @@ int	extract_message(char **buf, char **msg)
 	i = 0;
 	while ((*buf)[i])
 	{
-		if ((*buf[i]) == '\n')
+		if ((*buf)[i] == '\n')
 		{
 			newbuf = (char *)calloc(1, sizeof(*newbuf)*(strlen(*buf + i + 1) + 1));
 			if (newbuf == 0)
@@ -95,7 +97,7 @@ void	serve(int fd)
 	char	*str;
 	while (extract_message(&msg[fd], &str))
 	{
-		sprintf(wbuf, "client %d;", id[fd]);
+		sprintf(wbuf, "client %d:", id[fd]);
 		notify(fd, wbuf);
 		notify(fd, str);
 		free(str);
@@ -124,7 +126,7 @@ int	main(int ac, char **av)
 	{
 		rfds = wfds = fds;
 		if (select(fd_max + 1, &rfds, &wfds, NULL, NULL) < 0)
-			exit_err("Fatal error/n");
+			exit_err("Fatal error\n");
 		for (int fd = 0; fd <= fd_max; fd++)
 		{
 			if (!FD_ISSET(fd, &rfds))
